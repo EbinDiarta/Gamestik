@@ -17,4 +17,18 @@ public class Trash : MonoBehaviour
     {
         trashID = gameObject.name.Replace("(Clone)", "");
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!other.CompareTag("Player"))
+            return;
+
+        if (QuizManager.instance == null)
+            return;
+
+        if (QuizManager.instance.quizPanel.activeSelf)
+            return;
+
+        QuizManager.instance.OpenQuiz(this);
+    }
 }

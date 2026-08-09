@@ -2,29 +2,43 @@ using UnityEngine;
 
 public class TrashInteraction : MonoBehaviour
 {
-    public GameObject handButton;
-
-    private Trash currentTrash;
-
-    private void Start()
-    {
-        handButton.SetActive(false);
-    }
+    private bool playerInside;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Trash"))
+        if (other.CompareTag("Player"))
         {
-            currentTrash = other.GetComponent<Trash>();
-            QuizManager.instance.OpenQuiz(currentTrash);
+            playerInside = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Trash"))
+        if (other.CompareTag("Player"))
         {
-            currentTrash = null;
+            playerInside = false;
+        }
+    }
+
+    private void Update()
+    {
+        if (playerInside && Input.GetKeyDown(KeyCode.E))
+        {
+            OpenQuiz();
+        }
+    }
+
+    private void OpenQuiz()
+    {
+        Trash trash = GetComponent<Trash>();
+
+        if (trash != null)
+        {
+            QuizManager.instance.OpenQuiz(trash);
+        }
+        else
+        {
+            Debug.LogWarning("Script Trash tidak ditemukan pada object ini.");
         }
     }
 }

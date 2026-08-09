@@ -7,8 +7,8 @@ public class DragTrash : MonoBehaviour,
     IEndDragHandler
 {
     private Vector3 startPosition;
-
     private CanvasGroup canvasGroup;
+    private RectTransform rectTransform;
 
     public Trash.TrashType trashType;
     public Trash currentTrash;
@@ -16,28 +16,34 @@ public class DragTrash : MonoBehaviour,
     private void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
+        rectTransform = GetComponent<RectTransform>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        startPosition = transform.position;
+        startPosition = rectTransform.position;
 
-        // Agar tong sampah bisa menerima drop
-        canvasGroup.blocksRaycasts = false;
+        if (canvasGroup != null)
+        {
+            canvasGroup.blocksRaycasts = false;
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = eventData.position;
+        rectTransform.position = eventData.position;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        canvasGroup.blocksRaycasts = true;
+        if (canvasGroup != null)
+        {
+            canvasGroup.blocksRaycasts = true;
+        }
     }
 
     public void ResetPosition()
     {
-        transform.position = startPosition;
+        rectTransform.position = startPosition;
     }
 }
