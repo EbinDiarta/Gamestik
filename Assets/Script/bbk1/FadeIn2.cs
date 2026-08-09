@@ -4,13 +4,14 @@ using System.Collections;
 
 public class FadeIn2 : MonoBehaviour
 {
-
+    public GameObject UI; 
     public Image fadePanel;
     public CameraFollow cam;
 
     void Start()
     {
         StartCoroutine(Intro());
+        UI.SetActive(false);
     }
 
 

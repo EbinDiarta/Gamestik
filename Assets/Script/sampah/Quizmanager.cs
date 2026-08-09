@@ -70,6 +70,8 @@ public class QuizManager : MonoBehaviour
     {
         if (quizAktif)
             return;
+        
+        Time.timeScale = 0;
 
         if (quizTrashPrefabs == null ||
             quizTrashPrefabs.Length < jumlahSampahQuiz)
@@ -301,6 +303,7 @@ public class QuizManager : MonoBehaviour
     private void FinishQuiz()
     {
         StopTimer();
+        Time.timeScale = 1;
 
         quizAktif = false;
 
