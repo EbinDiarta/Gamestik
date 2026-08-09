@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class TrashItem : MonoBehaviour
 {
+    
     public int id;
 
     public void Init(int newId)
@@ -13,5 +14,20 @@ public class TrashItem : MonoBehaviour
     {
         TrashSpawner.cleanedTrash.Add(id);
         Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("Player"))
+        {
+           uismph.instance.Sentuh();
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            uismph.instance.Tutup();
+        }
     }
 }

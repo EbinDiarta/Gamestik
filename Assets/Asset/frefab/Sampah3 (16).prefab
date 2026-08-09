@@ -100,7 +100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42be8a4c53f29da4a930b9376e9f98c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ui: {fileID: 0}
   jenisSampah: 0
+  trashID: 
 --- !u!50 &6822076635475088573
 Rigidbody2D:
   serializedVersion: 4
@@ -185,4 +187,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8042514a7989c544945d6d12f854918, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ui: {fileID: 0}
   id: 0

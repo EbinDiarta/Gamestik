@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Trash : MonoBehaviour
 {
+    private bool playerInside = false;
+
     public enum TrashType
     {
         Organik,
@@ -13,16 +15,10 @@ public class Trash : MonoBehaviour
     [HideInInspector]
     public string trashID;
 
-    private void Awake()
+    void Update()
     {
-        trashID = gameObject.name.Replace("(Clone)", "");
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (!other.CompareTag("Player"))
-            return;
-
+        if (playerInside && Input.GetKeyDown(KeyCode.E))
+        {
         if (QuizManager.instance == null)
             return;
 
@@ -30,5 +26,27 @@ public class Trash : MonoBehaviour
             return;
 
         QuizManager.instance.OpenQuiz(this);
+    
+        }
+    }
+
+    private void Awake()
+    {
+        trashID = gameObject.name.Replace("(Clone)", "");
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            playerInside = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            playerInside = false;
+        }
     }
 }
