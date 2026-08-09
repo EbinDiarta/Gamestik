@@ -8,20 +8,11 @@ public class Warga : MonoBehaviour
 
     public static bool sudahNgomong = false;
 
-    void Start()
-    {
-        if (GameClock.instance != null)
-        {
-            Oknum.SetActive(GameClock.instance.currentDay == 2);
-        }
-    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") &&
-            !sudahNgomong &&
-            GameClock.instance != null &&
-            GameClock.instance.currentDay == 2)
+            !sudahNgomong)
         {
             sudahNgomong = true;
             Intro.instance.Babak4_Warga();

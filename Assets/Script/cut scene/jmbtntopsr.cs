@@ -6,11 +6,6 @@ public class jmbtntopsr : MonoBehaviour
 {
     public CameraFollow cam;
     public Image fadePanel;
-
-    public GameObject cutscene;
-    public GameObject cutscene2;
-    public GameObject zone;
-
     public Transform mc;
     public Transform tujuan;
 
@@ -18,8 +13,7 @@ public class jmbtntopsr : MonoBehaviour
 
     void Start()
     {
-        cutscene.SetActive(false);
-        cutscene2.SetActive(false);
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -44,18 +38,7 @@ public class jmbtntopsr : MonoBehaviour
 
         cam.SnapToTarget();
 
-        zone.SetActive(false);
 
-        if (GameClock.instance.currentDay < 2)
-        {
-            cutscene.SetActive(true);
-            cutscene2.SetActive(false);
-        }
-        else
-        {
-            cutscene.SetActive(false);
-            cutscene2.SetActive(true);
-        }
 
         yield return StartCoroutine(FadeOut());
 

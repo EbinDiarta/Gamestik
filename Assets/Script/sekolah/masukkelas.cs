@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class pintu : MonoBehaviour
+public class masukkelas: MonoBehaviour
 {   
     public GameObject ui;
-    private bool posisi = false;
+    private bool tempat = false;
 
     void Start()
     {
@@ -12,21 +12,22 @@ public class pintu : MonoBehaviour
     }
 
     void Update(){
-        if (posisi && Input.GetKeyDown(KeyCode.E)){
-            if (Sound.instance != null)
+        if (tempat && Input.GetKeyDown(KeyCode.E)){
+    {
+        if (Sound.instance != null)
         {
             Sound.instance.PlaySFX(Sound.instance.tab);
         }
-        PlayerPrefs.SetInt("useSpawn", 1);
-        SceneManager.LoadScene(SceneData.rumah);
-        }
+        SceneManager.LoadScene(SceneData.sekolah);
+    }
+    }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            posisi = true;
+            tempat = true;
             ui.SetActive(true);
         }
     }
@@ -34,7 +35,7 @@ public class pintu : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            posisi = false;
+            tempat = false;
             ui.SetActive(false);
         }
     }

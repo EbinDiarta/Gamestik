@@ -58,7 +58,6 @@ public class GameManager_kelas : MonoBehaviour
     [Space(5)]
     [SerializeField] private GameObject[] daftarTombolBabVisual;
     
-    // BARU: Slot untuk memasukkan Button_exit utama yang berada di Quiz (parent)
     [SerializeField] private GameObject tombolExitUtamaKuis; 
     
     [Space(5)]
@@ -80,20 +79,13 @@ public class GameManager_kelas : MonoBehaviour
         }
 
         MatiTotalPopUp();
-
-        // === LOGIKA DIPERBAIKI: SEMBUNYIKAN TOMBOL UTAMA JIKA KUIS BABAK INI SUDAH SELESAI ===
         int babakAktif = PlayerPrefs.GetInt("BabakAktif", 1);
-        
-        // Kita periksa apakah salah satu kuis spesifik (0, 1, atau 2) sudah menyelesaikan babak aktif saat ini
         for (int i = 0; i < dataKuisBab.Count; i++)
         {
             string kunciPenyimpanan = "KuisBabak_" + i + "_Selesai";
-            // Jika ada kuis yang selesai, kita cek kecocokannya dengan progres babak
-            // (Atau bisa langsung menggunakan status penyelesaian kuis babak aktif)
+
         }
 
-        // Ambil status apakah babak aktif saat ini sudah menyelesaikan kuis
-        // Kita buat flag universal berdasarkan BabakAktif agar sinkron dengan script GantiBabak
         string kunciBabakAktif = "KuisSelesai_Babak_" + babakAktif;
         if (PlayerPrefs.GetInt(kunciBabakAktif, 0) == 1)
         {
@@ -104,10 +96,6 @@ public class GameManager_kelas : MonoBehaviour
             }
         }
     }
-    // ==========================================
-    //          SISTEM UTAMA: MATERI
-    // ==========================================
-    
     public void BukaMateri()
     {
         AktifkanGrupParent(penjelasanMateri, true);
@@ -159,10 +147,6 @@ public class GameManager_kelas : MonoBehaviour
         if (buttonBack != null) buttonBack.SetActive(halamanSekarang > 0);
         if (buttonNext != null) buttonNext.SetActive(halamanSekarang < daftarHalaman.Length - 1);
     }
-
-    // ==========================================
-    //           SISTEM UTAMA: QUIZ
-    // ==========================================
     
     public void BukaQuiz()
     {
@@ -172,8 +156,6 @@ public class GameManager_kelas : MonoBehaviour
         if (menuUtamaPapan != null) menuUtamaPapan.SetActive(false);
 
         ResetPanelKuis();
-
-        // === TAMBAHAN JIKA PLAYER SUDAH MENYELESAIKAN KUIS DI BABAK INI ===
         int babakAktif = PlayerPrefs.GetInt("BabakAktif", 1);
         string kunciBabakIni = "KuisSelesai_Babak_" + babakAktif;
         
@@ -189,7 +171,6 @@ public class GameManager_kelas : MonoBehaviour
         AktifkanGrupParent(penjelasanQuiz, false);
         if (menuUtamaPapan != null) menuUtamaPapan.SetActive(true);
 
-        // === LOGIKA UTAMA: CEK KEMBALI TOMBOL PAPAN TULIS SAAT KUIS DITUTUP ===
         int babakAktif = PlayerPrefs.GetInt("BabakAktif", 1);
         string kunciBabakIni = "KuisSelesai_Babak_" + babakAktif;
 
@@ -197,14 +178,14 @@ public class GameManager_kelas : MonoBehaviour
         {
             if (tombolQuizPapanTulis != null) 
             {
-                tombolQuizPapanTulis.SetActive(false); // Matikan tombol kuis di papan tulis secara fisik
+                tombolQuizPapanTulis.SetActive(false); 
             }
         }
         else
         {
             if (tombolQuizPapanTulis != null) 
             {
-                tombolQuizPapanTulis.SetActive(true); // Pastikan tetap menyala jika belum dikerjakan
+                tombolQuizPapanTulis.SetActive(true); 
             }
         }
     }
@@ -217,7 +198,6 @@ public class GameManager_kelas : MonoBehaviour
         if (panelKonfirmasiExit != null) panelKonfirmasiExit.SetActive(false); 
         if (panelScoringFinal != null) panelScoringFinal.SetActive(false); 
 
-        // BARU: Saat berada di AWAL (pilih bab) atau kembali ke menu pilih bab, pastikan tombol exit UTAMA menyala
         if (tombolExitUtamaKuis != null) tombolExitUtamaKuis.SetActive(true);
 
         PerbaruiTampilanTombolBab();
@@ -227,7 +207,6 @@ public class GameManager_kelas : MonoBehaviour
     {
         if (daftarTombolBabVisual == null || daftarTombolBabVisual.Length == 0) return;
 
-        // 1. Hitung secara total, berapa banyak kuis yang SUDAH PERNAH diselesaikan pemain
         int totalKuisSelesai = 0;
         for (int i = 0; i < daftarTombolBabVisual.Length; i++)
         {
@@ -238,12 +217,10 @@ public class GameManager_kelas : MonoBehaviour
             }
         }
 
-        // 2. Ambit status babak aktif saat ini (Babak 1, Babak 2, atau Babak 3)
         int babakAktif = PlayerPrefs.GetInt("BabakAktif", 1);
         string kunciBabakAktifSelesai = "KuisSelesai_Babak_" + babakAktif;
         bool kuisBabakIniSudahSelesai = PlayerPrefs.GetInt(kunciBabakAktifSelesai, 0) == 1;
 
-        // 3. Atur kemunculan tombol secara dinamis
         for (int i = 0; i < daftarTombolBabVisual.Length; i++)
         {
             if (daftarTombolBabVisual[i] != null)
@@ -253,12 +230,10 @@ public class GameManager_kelas : MonoBehaviour
 
                 if (kuisBabakIniSudahSelesai)
                 {
-                    // Jika di babak AKTIF INI player sudah beres ngerjain 1 kuis, sembunyikan SEMUA tombol kuis
                     daftarTombolBabVisual[i].SetActive(false);
                 }
                 else
                 {
-                    // JIKA BELUM SELESAI: Tampilkan tombol HANYA JIKA kuis spesifik tersebut belum pernah dikerjakan
                     daftarTombolBabVisual[i].SetActive(!kuisIniSudahSelesai);
                 }
             }
@@ -294,7 +269,6 @@ public class GameManager_kelas : MonoBehaviour
         if (panelSkor != null) panelSkor.SetActive(false); 
         if (panelKonfirmasiExit != null) panelKonfirmasiExit.SetActive(false); 
 
-        // BARU: Sembunyikan/Hilangkan tombol exit utama saat menjawab soal agar tidak mengganggu
         if (tombolExitUtamaKuis != null) tombolExitUtamaKuis.SetActive(false);
 
         PerbaruiVisualTeksSoal();
@@ -356,16 +330,10 @@ public class GameManager_kelas : MonoBehaviour
         {
             uiTeksSkorAkhir.text = "SKOR KAMU:\n" + skorAkhir.ToString(); 
         }
-
-        // ===================================================================
-        // LOGIKA PENYIMPANAN DATA SINKRON (SINKRONISASI TOMBOL PAPAN TULIS)
-        // ===================================================================
         int babakAktif = PlayerPrefs.GetInt("BabakAktif", 1);
         
-        // 1. Simpan bahwa babak aktif ini sudah menyelesaikan kuis utamanya
         PlayerPrefs.SetInt("KuisSelesai_Babak_" + babakAktif, 1);
 
-        // 2. Simpan indeks kuis spesifik (Geografi/Ekonomi/Sosiologi) agar tidak muncul di panel pilihan lagi
         string kunciPenyimpanan = "KuisBabak_" + indeksBabTerakhir + "_Selesai";
         PlayerPrefs.SetInt(kunciPenyimpanan, 1); 
         
@@ -373,31 +341,26 @@ public class GameManager_kelas : MonoBehaviour
         
         if (panelPilihBab != null) panelPilihBab.SetActive(false);
         
-        // Matikan langsung tombol kuis di papan tulis di latar belakang agar aman
         if (tombolQuizPapanTulis != null) tombolQuizPapanTulis.SetActive(false);
     }
     public void KlikTombolExitUtamaKuisTamat()
     {
-        // Periksa apakah ke-3 bab sudah selesai semua atau belum
         int totalBabSelesai = 0;
         for (int i = 0; i < statusBabSelesai.Count; i++)
         {
             if (statusBabSelesai[i]) totalBabSelesai++;
         }
 
-        // JIKA BELUM TAMAT SEMUA: klik tombol exit hanya berfungsi menutup kuis dan kembali ke papan tulis biasa
         if (totalBabSelesai < dataKuisBab.Count)
         {
             TutupQuiz();
             return;
         }
 
-        // JIKA SUDAH SELESAI SEMUA: Munculkan pop-up Scoring Final
         if (panelPilihBab != null) panelPilihBab.SetActive(false);
         if (panelSkor != null) panelSkor.SetActive(false);
         if (panelScoringFinal != null) panelScoringFinal.SetActive(true); 
-        if (tombolExitUtamaKuis != null) tombolExitUtamaKuis.SetActive(false); // Sembunyikan karena sudah ada tombol SELESAI final
-
+        if (tombolExitUtamaKuis != null) tombolExitUtamaKuis.SetActive(false); 
         int totalNilaiGabungan = 0;
         for (int i = 0; i < nilaiPerBab.Count; i++)
         {
@@ -424,10 +387,7 @@ public class GameManager_kelas : MonoBehaviour
         TutupQuiz();
     }
 
-    // =======================================================
-    //       POP-UP KONFIRMASI (RESTART / CONTINUE)
-    // =======================================================
-
+ 
     public void KlikTombolExitKuis()
     {
         if (panelKonfirmasiExit != null) panelKonfirmasiExit.SetActive(true); 
@@ -450,10 +410,6 @@ public class GameManager_kelas : MonoBehaviour
         jumlahJawabanBenar = 0;
         ResetPanelKuis();
     }
-
-    // ==========================================
-    //         FUNGSI BANTUAN (HELPER)
-    // ==========================================
 
     private void AktifkanGrupParent(GameObject targetObject, bool status)
     {

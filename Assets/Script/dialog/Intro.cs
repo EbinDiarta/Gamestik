@@ -213,15 +213,13 @@ string[] babak5_setelahBanjir =
 
     void Update()
     {
-        if (task.activeSelf && Input.GetMouseButtonDown(0))
+        if (task.activeSelf && Input.GetKeyDown(KeyCode.Space))
         {
             NextDialog();
         }
     }
 
-    // =======================
-    // MULAI DIALOG UMUM
-    // =======================
+  
     public void StartDialog(string[] dialog)
     {
         if (dialog == null || dialog.Length == 0) return;
@@ -234,9 +232,7 @@ string[] babak5_setelahBanjir =
         intro.text = dialogAktif[index];
     }
 
-    // =======================
-    // NEXT
-    // =======================
+
     void NextDialog()
     {
         index++;

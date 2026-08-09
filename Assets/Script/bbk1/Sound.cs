@@ -89,7 +89,6 @@ public class Sound : MonoBehaviour
         }
     }
 
-    // ================= MUSIC =================
     public void PlayMusic(AudioClip clip)
     {
         if (clip == null) return;
@@ -101,7 +100,6 @@ public class Sound : MonoBehaviour
         musicSource.Play();
     }
 
-    // ================= SFX =================
     public void PlaySFX(AudioClip clip)
     {
         if (clip == null) return;
@@ -109,7 +107,6 @@ public class Sound : MonoBehaviour
         sfxSource.PlayOneShot(clip);
     }
 
-    // ================= BANJIR =================
     public void PlayBanjir()
     {
         if (Banjir == null) return;
@@ -149,7 +146,6 @@ public class Sound : MonoBehaviour
         banjirSource.volume = startVolume;
     }
 
-    // ================= GAME STATE =================
     public void PlayGameOverMusic()
     {
         if (gameOverMusic == null) return;

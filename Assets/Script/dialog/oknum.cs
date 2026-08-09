@@ -3,42 +3,43 @@ using UnityEngine;
 public class oknum : MonoBehaviour
 {
     public GameObject Oknum;
+    
+    public GameObject ui;
+    private bool posisi = false;
 
     public static bool sudahNgomong = false;
-    bool statusAktif = false;
-
+    
     void Start()
     {
-        UpdateStatus();
+        ui.SetActive(false);
     }
 
-    void Update()
-    {
-        UpdateStatus();
-    }
-
-    void UpdateStatus()
-    {
-        if (GameClock.instance == null) return;
-
-        bool shouldActive = GameClock.instance.currentDay == 0;
-
-        if (shouldActive != statusAktif)
-        {
-            statusAktif = shouldActive;
-            Oknum.SetActive(statusAktif);
+    void Update(){
+        if (posisi && Input.GetKeyDown(KeyCode.E)){
+            if (!sudahNgomong)
+            {
+               Intro.instance.Babak1_Jalan();
+                sudahNgomong = true;
+                ui.SetActive(false);
+            }
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+
+     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.CompareTag("Player") &&
-            !sudahNgomong &&
-            GameClock.instance != null &&
-            GameClock.instance.currentDay == 0)
+        if (collision.CompareTag("Player"))
         {
-            sudahNgomong = true;
-            Intro.instance.Babak1_Jalan();
+            posisi = true;
+            ui.SetActive(true);
+        }
+    }
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            posisi = false;
+            ui.SetActive(false);
         }
     }
 }

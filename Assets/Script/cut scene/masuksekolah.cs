@@ -4,13 +4,20 @@ using UnityEngine.UI;
 
 public class masuksekolah : MonoBehaviour
 {
+    public static masuksekolah instance;
     public CameraFollow cam;
     public Image fadePanel;
 
     public Transform mc;
     public Transform tujuan;
 
-    public void Pindah()
+    private void Awake()
+    {
+            instance = this;
+        
+    }
+
+    public void gosekolah()
     {
         StartCoroutine(Teleport());
     }

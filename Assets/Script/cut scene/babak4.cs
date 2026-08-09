@@ -22,7 +22,6 @@ public class babak4 : MonoBehaviour
         cutscene.SetActive(true);
         yield return new WaitForSeconds(3f);
         SimpanSampahTersisa();
-        GameClock.instance.gantibbk();
         SceneManager.LoadScene(SceneData.stlhbanjir);
         cutscene.SetActive(false);
         gameObject.SetActive(false);

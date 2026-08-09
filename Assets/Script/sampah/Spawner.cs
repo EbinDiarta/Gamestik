@@ -4,74 +4,34 @@ using System.Collections.Generic;
 public class Spawner : MonoBehaviour
 {
     public GameObject[] trashPrefabs;
+    public Transform[] spawn;
+    int minT = 3;
+    int Maxt = 6;
 
-    [Header("Babak 1")]
-    public Transform[] spawnBabak1;
-
-    [Header("Babak 2")]
-    public Transform[] spawnBabak2;
-
-    [Header("Babak 3")]
-    public Transform[] spawnBabak3;
-
-    public static HashSet<int> cleanedTrash = new HashSet<int>();
 
     void Start()
     {
         SpawnTrash();
     }
-    public void RespawnTrash()
-{
-    GameObject[] trashes = GameObject.FindGameObjectsWithTag("Trash");
 
-    foreach (GameObject trash in trashes)
-    {
-        Destroy(trash);
-    }
-
-    SpawnTrash();
-}
     void SpawnTrash()
     {
-        Transform[] spawnPoints = GetSpawnPoints();
+     
+        int babakAktif = PlayerPrefs.GetInt("BabakAktif", 1);
+        int statusKuis = PlayerPrefs.GetInt("KuisSelesai_Babak_" + babakAktif, 0);
 
-        for (int i = 0; i < spawnPoints.Length; i++)
-        {
-            if (cleanedTrash.Contains(i))
-                continue;
+        
+            if (statusKuis == 1){
+                int jumlah = Random.Range(minT,Maxt + 1);
+                for (int i = 0; i < jumlah; i++)
+                {
 
-            int randomTrash = Random.Range(0, trashPrefabs.Length);
+                    GameObject trash = trashPrefabs[Random.Range(0, trashPrefabs.Length)];
 
-            GameObject trash = Instantiate(
-                trashPrefabs[randomTrash],
-                spawnPoints[i].position,
-                Quaternion.identity
-            );
+                    Transform posisi = spawn[Random.Range(0, spawn.Length)];
 
-            TrashItem item = trash.GetComponent<TrashItem>();
-
-            if (item != null)
-                item.Init(i);
-        }
-    }
-
-    Transform[] GetSpawnPoints()
-    {
-        int day = GameClock.instance.currentDay;
-
-        switch (day)
-        {
-            case 0:
-                return spawnBabak1;
-
-            case 1:
-                return spawnBabak2;
-
-            case 2:
-                return spawnBabak3;
-
-            default:
-                return spawnBabak1;
+                    Instantiate(trash,posisi.position,Quaternion.identity);
+                }
         }
     }
 }
