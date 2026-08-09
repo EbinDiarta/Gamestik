@@ -9,17 +9,12 @@ public class Intro : MonoBehaviour
     public GameObject text1;
     public TextMeshProUGUI intro;
 
-// =======================
-// BABAK 1
-// =======================
 string[] babak1_kamar =
 {
-    "Arik: Hari ini mau coba lagi... pasti bisa.",
-    "Ibu: Udah bangun? Sarapan dulu sebelum pergi.",
-    "Arik: Iya, Bu. Eh, Bapak ke mana?",
-    "Ibu: Bapak udah pergi dari subuh, mancing kayaknya. Kenapa?",
-    "Arik: Mau ngomong soal sampah di kali depan, Bu. Udah mampet parah.",
-    "Ibu: Aduh, itu urusan Bapak sama warga. Kamu fokus sekolah dulu."
+    "Pak Alif : Pagi, Nak!",
+    "Arik : Pagi, Pak!",
+    "Pak Alif : Hati-hati di jalan.",
+    "Arik : Iya, Pak. Terima kasih."
 };
 
 string[] babak1_jalan =
@@ -33,39 +28,45 @@ string[] babak1_jalan =
 
 string[] babak1_sekolah =
 {
-    "Reza: Lo kenapa manyun?",
-    "Arik: Tadi ketemu warga buang sampah ke kali lagi. Gue negur, diketawain.",
-    "Reza: Serius? Respons mereka emang gitu terus ya.",
-    "Reza: Sabar... mungkin mereka nggak tau dampaknya.",
-    "Reza: Atau tau, tapi nggak peduli.",
-    "Arik: Yang bikin frustrasi itu Bapak gue.",
-    "Reza: Kenapa nggak minta Bapak lo yang action?",
-    "Arik: Udah dicoba. Dibilangnya itu bukan prioritas."
+    "Arik : Pagi Pak...",
+    "Pak Udin : Mau pergi sekolah nak?",
+    "Arik : Iya, Pak?",
+    "Pak Udin  : Kalian tahu sesuatu tentang sampah ini?",
+    "Arik : Tidak, Pak. Kami juga baru melihatnya.",
+    "Pak Udin  : Hati-hati.",
+    "Arik : Kenapa, Pak?",
+    "Pak Udin  :  Saya melihat seseorang berkeliaran di sekitar sini tadi malam.",
+    "Arik : Seseorang?",
+    "Pak Udin : Ya, tapi saya tidak melihat wajahnya dengan jelas.",
+    "Arik : Apakah dia melakukan sesuatu?",
+    "Pak Udin : Saya tidak tahu.",
+    "Pak Udin : Setelah dia pergi, sampah mulai bermunculan.",
+    "Arik : Jadi mungkin ada hubungannya?",
+    "Pak Udin : Mungkin. Tapi jangan membuat kesimpulan terlalu cepat.",
+    "Arik : Baik, Pak. Terima kasih atas informasinya."
 };
 
-// =======================
-// BABAK 2
-// =======================
-string[] babak2_kamar =
+string[] ojol =
 {
-    "Arik: Bu, Bapak udah pulang semalam?",
-    "Ibu: Belum, kayaknya nginep di balai RT.",
-    "Arik: Rapat apaan... bukan soal sampah pasti.",
-    "Ibu: Hush. Udah, jalan sana nanti telat."
+    "Pak Wowo : Aduh... semakin hari semakin banyak saja sampahnya.",
+    "Arik : Pak, apakah sampah ini sudah ada sejak kemarin?",
+    "Pak Wowo : Sepertinya baru beberapa hari terakhir.",
+    "Arik : Bapak tahu siapa yang membuangnya?",
+    "Pak Wowo : Tidak tahu.",
+    "Pak Wowo : Tiba-tiba saja sampahnya sudah menumpuk.",
+    "Arik : Aneh sekali."
 };
 
 string[] babak2_setelah_anjing =
 {
-    "Pak Aris: Mau kesekolah nak?",
-    "Arik: Iya, Pak... Bapak lagi istirahat?",
-    "Pak Aris: Iya, cape udah nyapu dari subuh, tapi sejam lagi balik berantakan lagi. Ngapain juga gue nyapu.",
-    "Arik: Kok bisa gitu, Pak?",
-    "Pak Aris: Orang buang sampah sembarangan terus.",
-    "Arik: ... (merenung)",
-    "Pak Aris: Ya udah, kamu hati-hati lewat disana",
-    "Arik: Emang kenapa pak?.",
-    "Pak Aris: Anjing saya suka ngejar anak-anak yang lewat situ.",
-    "Arik: Baik lah, Pak... (lega)"
+    "Pak Karno : Tolong hati-hati melewati jalan itu!",
+    "Arik : Kenapa, Pak?",
+    "Pak Karno : Banyak sampah berserakan di sana.",
+    "Arik : Oh, baik Pak. Terima kasih.",
+    "Pak Karno : Sepertinya ada yang sengaja membuang sampah di sana.",
+    "Arik : Sengaja?",
+    "Pak Karno : Saya tidak yakin, tapi rasanya memang begitu.",
+    "Arik : Hmm... semakin mencurigakan."
 };
 
 string[] babak2_sekolah =
@@ -75,10 +76,6 @@ string[] babak2_sekolah =
     "Reza: Terus kita mau ngapain?",
     "Arik: Kita perlu cara lain..."
 };
-
-// =======================
-// BABAK 3
-// =======================
 string[] babak3_awal =
 {
     "Arik: Aduh, ada anjing liar. Terpaksa lewat pasar."
@@ -108,9 +105,6 @@ string[] babak3_diskusi =
     "Arik: Iya. Kita coba."
 };
 
-// =======================
-// BABAK 4
-// =======================
 string[] babak4_rencana =
 {
     "Arik: Sore ini kita speak up ke warga dan Pak RT.",
@@ -143,9 +137,6 @@ string[] babak4_pakrt =
     "Pak RT: Sudah! Pergi!"
 };
 
-// =======================
-// BABAK 5
-// =======================
 string[] babak5_OjolDiPasar =
 {
     "Arik: Bang, kok pasar sepi ya hari ini?",
@@ -223,7 +214,7 @@ string[] babak5_setelahBanjir =
     public void StartDialog(string[] dialog)
     {
         if (dialog == null || dialog.Length == 0) return;
-
+        Time.timeScale = 0;
         dialogAktif = dialog;
         index = 0;
 
@@ -249,6 +240,7 @@ string[] babak5_setelahBanjir =
 
     void EndDialog()
     {
+        Time.timeScale = 1;
         task.SetActive(false);
         text1.SetActive(false);
         dialogAktif = null;
@@ -269,9 +261,9 @@ string[] babak5_setelahBanjir =
         StartDialog(babak1_sekolah);
     }
 
-    public void Babak_OjolDiPasar()
+    public void Ojol()
     {
-        StartDialog(babak5_OjolDiPasar);
+        StartDialog(ojol);
     }
 
     public void Babak2_Sekolah()

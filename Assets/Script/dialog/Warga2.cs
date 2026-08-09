@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Warga : MonoBehaviour
+public class Warga2 : MonoBehaviour
 {
 
     public static bool sudahNgomong = false;
@@ -14,7 +14,7 @@ public class Warga : MonoBehaviour
             !sudahNgomong)
         {
             sudahNgomong = true;
-            Intro.instance.Babak1_Kamar();
+            Intro.instance.Ojol();
         }
     }
 }

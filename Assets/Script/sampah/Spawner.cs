@@ -1,5 +1,6 @@
 using UnityEngine;
-using System.Collections.Generic;
+using System.Collections;
+
 
 public class Spawner : MonoBehaviour
 {
@@ -8,20 +9,39 @@ public class Spawner : MonoBehaviour
     int minT = 3;
     int Maxt = 6;
 
+    public MiniBoss miniBoss;
+
 
     void Start()
     {
-        SpawnTrash();
+        StartCoroutine(LoopSampah());
     }
 
-    void SpawnTrash()
+
+    IEnumerator LoopSampah()
     {
-     
         int babakAktif = PlayerPrefs.GetInt("BabakAktif", 1);
         int statusKuis = PlayerPrefs.GetInt("KuisSelesai_Babak_" + babakAktif, 0);
 
         
-            if (statusKuis == 1){
+            if (statusKuis != 1)
+        {
+            yield break;
+        }
+
+        while (!miniBoss.miniBossKalah)
+        {
+            SpawnTrash();
+            yield return new WaitForSeconds(3f);
+        }
+    }
+
+
+    void SpawnTrash()
+    {
+     
+        
+
                 int jumlah = Random.Range(minT,Maxt + 1);
                 for (int i = 0; i < jumlah; i++)
                 {
@@ -33,5 +53,4 @@ public class Spawner : MonoBehaviour
                     Instantiate(trash,posisi.position,Quaternion.identity);
                 }
         }
-    }
 }

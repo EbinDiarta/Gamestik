@@ -9,12 +9,10 @@ public class Controller : MonoBehaviour
     public bool jumpDown;
     public bool jumpHold;
 
-    // GERAK
     public void MajuDown() => horizontal = 1;
     public void MundurDown() => horizontal = -1;
     public void StopMove() => horizontal = 0;
 
-    // LOMPAT UI
     public void LoncatDown()
     {
         if (Sound.instance != null)
@@ -32,7 +30,6 @@ public class Controller : MonoBehaviour
 
     void LateUpdate()
     {
-        // reset sekali tekan
         jumpDown = false;
     }
 }

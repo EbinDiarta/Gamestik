@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/stlhbanjir.unity
     guid: 0d1d55641820c9f4b8de054c4dabf57f
+  - enabled: 1
+    path: Assets/Scenes/misi.unity
+    guid: 9a7821a49ebe5e448be10a12778e05c1
   m_configObjects: {}

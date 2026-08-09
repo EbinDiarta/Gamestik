@@ -14,8 +14,7 @@ public class SceneResume : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); // tidak hancur saat pindah scene
-        }
+            DontDestroyOnLoad(gameObject); }
         else
         {
             Destroy(gameObject);

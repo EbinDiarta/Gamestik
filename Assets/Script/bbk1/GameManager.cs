@@ -5,6 +5,24 @@ public class GameManager : MonoBehaviour
 {
     public GameObject Pause;
     public GameObject PauseBtn;
+
+
+    
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (Pause.activeSelf)
+            {
+                resume();
+            }
+            else
+            {
+                pause();
+            }
+        }
+    }
+
     public void pause()
     {
         if (Sound.instance != null)
