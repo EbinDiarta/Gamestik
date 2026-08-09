@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class TrashInteraction : MonoBehaviour
 {
-    private bool playerInside;
+    private bool playerInside = false;
+    
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {

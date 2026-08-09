@@ -22,8 +22,7 @@ public class QuizManager : MonoBehaviour
     [Header("Timer")]
     public float maxTime = 5f;
 
-    public static int score = 0;
-    public static int sampahSelesai = 0;
+    public int score = 0;
 
     private float currentTime;
     private bool isTiming;
@@ -44,7 +43,6 @@ public class QuizManager : MonoBehaviour
         quizPanel.SetActive(false);
 
         score = 0;
-        sampahSelesai = 0;
 
         UpdateScore();
         UpdateTimer();
@@ -55,7 +53,7 @@ public class QuizManager : MonoBehaviour
         if (!isTiming)
             return;
 
-        currentTime -= Time.deltaTime;
+        currentTime -= Time.unscaledDeltaTime;
 
         UpdateTimer();
 
@@ -70,7 +68,6 @@ public class QuizManager : MonoBehaviour
     {
         if (quizAktif)
             return;
-        
         Time.timeScale = 0;
 
         if (quizTrashPrefabs == null ||
@@ -120,8 +117,6 @@ public class QuizManager : MonoBehaviour
         {
             touchedTrash.gameObject.SetActive(false);
         }
-
-        sampahSelesai = 0;
 
         quizPanel.SetActive(true);
 
@@ -244,8 +239,7 @@ public class QuizManager : MonoBehaviour
 
         if (dragTrash.trashType == selectedBin)
         {
-            score += 10;
-            sampahSelesai++;
+            score += 2;
 
             UpdateScore();
 
@@ -303,6 +297,7 @@ public class QuizManager : MonoBehaviour
     private void FinishQuiz()
     {
         StopTimer();
+        
         Time.timeScale = 1;
 
         quizAktif = false;
@@ -324,7 +319,7 @@ public class QuizManager : MonoBehaviour
         Trash[] remainingTrash =
             FindObjectsOfType<Trash>();
 
-        if (remainingTrash.Length <= 0)
+        if (score == 100)
         {
             FinishGame();
         }

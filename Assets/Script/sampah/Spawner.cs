@@ -6,7 +6,7 @@ public class Spawner : MonoBehaviour
 {
     public GameObject[] trashPrefabs;
     public Transform[] spawn;
-    int minT = 3;
+    int minT = 5;
     int Maxt = 6;
 
     public MiniBoss miniBoss;
