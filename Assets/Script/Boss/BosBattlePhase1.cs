@@ -1,40 +1,50 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BossBattlePhase1 : MonoBehaviour
 {
-    [Header("Boss Health Settings")]
+    [Header("UI Canvas Setup")]
+    [SerializeField] private GameObject bossBattleCanvas;
     [SerializeField] private Slider bossHealthSlider;
+    [SerializeField] private GameObject[] playerHearts;
+
+    [Header("Boss & Player Settings")]
     [SerializeField] private int maxBossHealth = 4;
-    private int currentBossHealth;
-
-    [Header("Trash Counter Settings")]
     [SerializeField] private int trashRequiredPerHit = 4;
-    private int currentTrashCount = 0;
-
-    [Header("Player Health Settings")]
-    [SerializeField] private Image[] playerHearts; // Array 3 Icon Hati
-    private int currentPlayerHealth = 3;
+    [SerializeField] private GameObject bossObject;
 
     [Header("Trash Spawner Settings")]
-    [SerializeField] private GameObject[] trashPrefabs; // Daftar Prefab Sampah 3R
-    [SerializeField] private Transform trashSpawnPoint; // Posisi munculnya sampah di UI Canvas
-    private GameObject currentActiveTrash;
+    [SerializeField] private GameObject[] trashPrefabs;
+    [SerializeField] private Transform trashSpawnPoint;
 
-    [Header("Dialog Hit Settings")]
+    [Header("Dialog & Feedback")]
     [SerializeField] private DialogManager dialogManager;
-    [TextArea(2, 4)]
-    [SerializeField] private string[] bossHitDialogs; // Dialog Boss tiap terkena hit (opsional per hit)
-    private int currentHitDialogIndex = 0;
+    [SerializeField] private string[] bossHitDialogs;
 
-    [Header("Phase Transition")]
-    [SerializeField] private GameObject bossObject;
+    private int currentBossHealth;
+    private int currentPlayerHealth;
+    private int currentTrashCount;
+    private GameObject currentSpawnedTrash;
 
     public bool isBattleActive { get; private set; } = false;
 
+    private void Start()
+    {
+        if (bossBattleCanvas != null)
+        {
+            bossBattleCanvas.SetActive(false);
+        }
+    }
+
     public void StartPhase1Battle()
     {
+        if (bossBattleCanvas != null)
+        {
+            bossBattleCanvas.SetActive(true);
+        }
+
         currentBossHealth = maxBossHealth;
         if (bossHealthSlider != null)
         {
@@ -51,17 +61,35 @@ public class BossBattlePhase1 : MonoBehaviour
         SpawnNextTrash();
     }
 
+    public void SpawnNextTrash()
+    {
+        if (!isBattleActive) return;
+
+        if (currentSpawnedTrash != null)
+        {
+            Destroy(currentSpawnedTrash);
+        }
+
+        if (trashPrefabs.Length == 0 || trashSpawnPoint == null)
+        {
+            Debug.LogWarning("Trash Prefabs atau Trash Spawn Point belum diatur di Inspector!");
+            return;
+        }
+
+        int randomIndex = Random.Range(0, trashPrefabs.Length);
+        currentSpawnedTrash = Instantiate(trashPrefabs[randomIndex], trashSpawnPoint.position, Quaternion.identity, bossBattleCanvas.transform);
+    }
+
     public void OnTrashSortedCorrectly()
     {
         if (!isBattleActive) return;
 
         currentTrashCount++;
 
-        // Jika sudah mencapai 4 sampah benar
         if (currentTrashCount >= trashRequiredPerHit)
         {
             currentTrashCount = 0;
-            ApplyDamageToBoss();
+            DamageBoss(1);
         }
         else
         {
@@ -73,82 +101,40 @@ public class BossBattlePhase1 : MonoBehaviour
     {
         if (!isBattleActive) return;
 
-        currentPlayerHealth--;
+        TakePlayerDamage(1);
+        SpawnNextTrash();
+    }
+
+    public void DamageBoss(int damageAmount)
+    {
+        currentBossHealth -= damageAmount;
+        if (currentBossHealth < 0) currentBossHealth = 0;
+
+        if (bossHealthSlider != null)
+        {
+            bossHealthSlider.value = currentBossHealth;
+        }
+
+        if (currentBossHealth <= 0)
+        {
+            WinBattle();
+        }
+        else
+        {
+            SpawnNextTrash();
+        }
+    }
+
+    public void TakePlayerDamage(int damageAmount)
+    {
+        currentPlayerHealth -= damageAmount;
+        if (currentPlayerHealth < 0) currentPlayerHealth = 0;
+
         UpdateHeartUI();
 
         if (currentPlayerHealth <= 0)
         {
             GameOver();
-        }
-        else
-        {
-            SpawnNextTrash(); // Munculkan sampah berikutnya
-        }
-    }
-
-    private void ApplyDamageToBoss()
-    {
-        currentBossHealth--;
-        if (bossHealthSlider != null) bossHealthSlider.value = currentBossHealth;
-
-        if (currentBossHealth <= 0)
-        {
-            OnBossDefeatedPhase1();
-        }
-        else
-        {
-            // Jeda sementara battle untuk Dialog Hit Boss
-            StartCoroutine(TriggerHitDialogRoutine());
-        }
-    }
-
-    private IEnumerator TriggerHitDialogRoutine()
-    {
-        isBattleActive = false; // Matikan input drag sementara
-
-        if (dialogManager != null && bossHitDialogs.Length > currentHitDialogIndex)
-        {
-            // Tampilkan dialog hit dari boss
-            dialogManager.StartDialog();
-            
-            // Tunggu hingga dialog diselesaikan oleh player
-            bool isDialogDone = false;
-            System.Action completedCallback = null;
-            completedCallback = () => {
-                isDialogDone = true;
-                dialogManager.OnDialogCompleted -= completedCallback;
-            };
-            dialogManager.OnDialogCompleted += completedCallback;
-
-            yield return new WaitUntil(() => isDialogDone);
-            currentHitDialogIndex++;
-        }
-
-        isBattleActive = true; // Aktifkan battle kembali
-        SpawnNextTrash();
-    }
-
-    public void SpawnNextTrash()
-    {
-        if (!isBattleActive) return;
-
-        if (currentActiveTrash != null)
-        {
-            Destroy(currentActiveTrash);
-        }
-
-        if (trashPrefabs.Length > 0 && trashSpawnPoint != null)
-        {
-            int randomIndex = Random.Range(0, trashPrefabs.Length);
-            currentActiveTrash = Instantiate(trashPrefabs[randomIndex], trashSpawnPoint);
-            currentActiveTrash.transform.localPosition = Vector3.zero;
-
-            // Sambungkan event Drag Drop sampah ke Manager
-            TrashDragDrop trashScript = currentActiveTrash.GetComponent<TrashDragDrop>();
-            if (trashScript != null)
-            {
-                trashScript.SetupBattleManager(this);
-            }
         }
     }
 
@@ -156,26 +142,26 @@ public class BossBattlePhase1 : MonoBehaviour
     {
         for (int i = 0; i < playerHearts.Length; i++)
         {
-            if (i < currentPlayerHealth)
-                playerHearts[i].enabled = true;
-            else
-                playerHearts[i].enabled = false;
+            if (playerHearts[i] != null)
+            {
+                playerHearts[i].SetActive(i < currentPlayerHealth);
+            }
         }
     }
 
-    private void OnBossDefeatedPhase1()
+    private void WinBattle()
     {
         isBattleActive = false;
-        if (currentActiveTrash != null) Destroy(currentActiveTrash);
+        if (currentSpawnedTrash != null) Destroy(currentSpawnedTrash);
 
-        Debug.Log("Fase 1 Selesai! Boss lari ke lokasi berikutnya.");
-        // Logika perpindahan ke latar/fase berikutnya dapat ditambahkan di sini
+        Debug.Log("Selamat! Fase 1 berhasil dikalahkan!");
     }
 
     private void GameOver()
     {
         isBattleActive = false;
-        if (currentActiveTrash != null) Destroy(currentActiveTrash);
-        Debug.Log("Player Kalah!");
+        if (currentSpawnedTrash != null) Destroy(currentSpawnedTrash);
+
+        Debug.Log("Game Over! Darah player habis.");
     }
 }

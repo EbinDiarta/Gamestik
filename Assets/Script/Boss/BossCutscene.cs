@@ -17,7 +17,8 @@ public class BossCutscene : MonoBehaviour
 
     [Header("Boss & Dialog Setup")]
     [SerializeField] private GameObject bossObject;
-    [SerializeField] private DialogManager dialogManager; // Referensi ke DialogManager
+    [SerializeField] private DialogManager dialogManager;
+    [SerializeField] private BossBattlePhase1 bossBattlePhase1;
 
     private bool isTriggered = false;
 
@@ -32,7 +33,6 @@ public class BossCutscene : MonoBehaviour
 
     private IEnumerator StartBossCutsceneRoutine()
     {
-        // 1. Kunci Player & Set Animasi ke Idle
         if (playerController != null)
         {
             playerController.enabled = false;
@@ -44,10 +44,8 @@ public class BossCutscene : MonoBehaviour
             if (anim != null) anim.SetBool("IsRun", false);
         }
 
-        // 2. Fade Out (Hitam)
         yield return StartCoroutine(Fade(0f, 1f));
 
-        // 3. Teleport Player & Aktifkan Boss
         if (useTeleport && playerController != null)
         {
             playerController.transform.position = new Vector3(
@@ -61,19 +59,15 @@ public class BossCutscene : MonoBehaviour
 
         yield return new WaitForSeconds(holdBlackDuration);
 
-        // 4. Fade In (Terang)
         yield return StartCoroutine(Fade(1f, 0f));
 
-        // 5. Mulai Dialog & Kunci kontrol sampai dialog selesai
         if (dialogManager != null)
         {
-            // Subscribe event saat dialog selesai
             dialogManager.OnDialogCompleted += EnablePlayerControl;
             dialogManager.StartDialog();
         }
         else
         {
-            // Jika tidak ada dialog manager, langsung lepas kontrol player
             EnablePlayerControl();
         }
     }
@@ -88,6 +82,11 @@ public class BossCutscene : MonoBehaviour
         if (playerController != null)
         {
             playerController.enabled = true;
+        }
+
+        if (bossBattlePhase1 != null)
+        {
+            bossBattlePhase1.StartPhase1Battle();
         }
     }
 
