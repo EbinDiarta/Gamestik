@@ -33,7 +33,6 @@ public class DialogManager : MonoBehaviour
 
     private void Awake()
     {
-        // Pastikan Panel & Teks Skip tersembunyi di awal game tanpa mematikan Canvas utamanya
         if (dialogPanel != null) dialogPanel.SetActive(false);
         if (skipInstructionUI != null) skipInstructionUI.SetActive(false);
     }
@@ -49,7 +48,6 @@ public class DialogManager : MonoBehaviour
             return;
         }
 
-        // Click Screen / Left Mouse Click
         if (Input.GetMouseButtonDown(0))
         {
             if (isTyping)
@@ -78,7 +76,6 @@ public class DialogManager : MonoBehaviour
         isDialogActive = true;
         currentLineIndex = 0;
 
-        // Aktifkan elemen UI di dalam Canvas
         if (dialogPanel != null) dialogPanel.SetActive(true);
         if (skipInstructionUI != null) skipInstructionUI.SetActive(true);
 

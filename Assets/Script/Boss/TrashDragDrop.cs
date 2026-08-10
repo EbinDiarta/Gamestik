@@ -35,7 +35,7 @@ public class TrashDragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         if (battleManager != null && !battleManager.isBattleActive) return;
 
         originalPosition = rectTransform.anchoredPosition;
-        canvasGroup.blocksRaycasts = false; // Membiarkan raycast menembus ke Tong Sampah di bawahnya
+        canvasGroup.blocksRaycasts = false; 
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -51,7 +51,6 @@ public class TrashDragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
         canvasGroup.blocksRaycasts = true;
 
-        // Cek apakah di-drop di atas Tong Sampah (TrashBin)
         GameObject droppedTarget = eventData.pointerCurrentRaycast.gameObject;
 
         if (droppedTarget != null)
@@ -76,7 +75,6 @@ public class TrashDragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             }
         }
 
-        // Jika dilepas di sembarang tempat, kembalikan ke posisi awal
         rectTransform.anchoredPosition = originalPosition;
     }
 

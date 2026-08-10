@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Video;
 
@@ -33,6 +34,7 @@ public class VideoFadeIn : MonoBehaviour
     StartCoroutine(MatikanVideo());
     FadeIn1.instance.fade();
         Sound.instance.PlayMusic(Sound.instance.gameMusic);
+    SceneManager.LoadScene(SceneData.halaman);
 }
 
 IEnumerator MatikanVideo()
@@ -40,8 +42,8 @@ IEnumerator MatikanVideo()
     yield return new WaitForSecondsRealtime(
         FadeIn1.instance.durasi
     );
-
     videoPlayer.gameObject.SetActive(false);
 }
+
 
 }

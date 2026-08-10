@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &51885440
 RectTransform:
   m_ObjectHideFlags: 0
@@ -204,7 +204,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 669959663}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: pause
         m_Mode: 1
@@ -391,7 +391,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &139741457
 RectTransform:
   m_ObjectHideFlags: 0
@@ -428,7 +428,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 669959662}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: Controller, Assembly-CSharp
           m_MethodName: MundurDown
           m_Mode: 1
@@ -444,7 +444,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 669959662}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: Controller, Assembly-CSharp
           m_MethodName: StopMove
           m_Mode: 1
@@ -996,7 +996,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &544804739
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1060,7 +1060,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 669959663}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: exit
         m_Mode: 1
@@ -1192,7 +1192,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 669959663}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: exit
         m_Mode: 1
@@ -1251,8 +1251,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 669959661}
-  - component: {fileID: 669959663}
-  - component: {fileID: 669959662}
   - component: {fileID: 669959664}
   m_Layer: 0
   m_Name: GameManager
@@ -1276,36 +1274,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &669959662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 669959660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b7b8f539fd77a445b57c4b18d8e6497, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizontal: 0
-  vertical: 0
-  jumpDown: 0
-  jumpHold: 0
---- !u!114 &669959663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 669959660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b19525608089324dbffae134654c559, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Pause: {fileID: 1286922712}
-  PauseBtn: {fileID: 51885439}
 --- !u!114 &669959664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1472,7 +1440,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 669959663}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: resume
         m_Mode: 1
@@ -2587,7 +2555,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1669710820
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2624,7 +2592,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 669959662}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: Controller, Assembly-CSharp
           m_MethodName: MajuDown
           m_Mode: 1
@@ -2640,7 +2608,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 669959662}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: Controller, Assembly-CSharp
           m_MethodName: StopMove
           m_Mode: 1
@@ -3271,7 +3239,7 @@ MonoBehaviour:
   acceleration: 12
   deceleration: 18
   animator: {fileID: 1918751532}
-  input: {fileID: 669959662}
+  input: {fileID: 0}
 --- !u!95 &1918751532
 Animator:
   serializedVersion: 5

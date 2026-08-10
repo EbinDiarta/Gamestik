@@ -19,7 +19,7 @@ public class kemusuh : MonoBehaviour
         {
             Sound.instance.PlaySFX(Sound.instance.tab);
         }
-        SceneManager.LoadScene(SceneData.misi);
+        SceneManager.LoadScene(SceneData.boss);
         }
     }
 

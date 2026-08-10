@@ -11,4 +11,5 @@ public class SceneData : MonoBehaviour
     public static int sekolah = 5;
     public static int stlhbanjir = 6;
     public static int misi = 7;
+    public static int boss = 8;
 }
