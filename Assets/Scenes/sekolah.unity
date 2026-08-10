@@ -2356,111 +2356,36 @@ MonoBehaviour:
   dataKuisBab:
   - namaBab: GEOGRGAFI
     kumpulanSoal:
-    - teksSoal: Sebuah daerah pegunungan memiliki curah hujan tinggi dan suhu udara
-        rendah. Kondisi tersebut menunjukkan adanya pengaruh faktor ....
-      pilihanA: A. Letak astronomis
-      pilihanB: B. Ketinggian tempat
-      pilihanC: C. Kepadatan penduduk
-      pilihanD: D. Aktivitas ekonomi
+    - teksSoal: Apa yang dimaksud dengan kebersihan lingkungan?
+      pilihanA: Lingkungan yang penuh dengan sampah
+      pilihanB: Lingkungan yang bebas dari sampah dan pencemaran
+      pilihanC: Lingkungan yang banyak bangunan
+      pilihanD: Lingkungan yang tidak memiliki tanaman
       jawabanBenar: B
-    - teksSoal: Dua wilayah yang saling bertukar hasil pertanian dan hasil industri
-        menunjukkan konsep geografi berupa ....
-      pilihanA: A. Morfologi
-      pilihanB: B. Lokasi absolut
-      pilihanC: C. Interaksi antarruang
-      pilihanD: D. Diferensiasi area
-      jawabanBenar: C
-    - teksSoal: Jika sebuah daerah memiliki akses jalan yang baik sehingga mudah
-        dijangkau, konsep geografi yang tepat adalah ....
-      pilihanA: A. Pola
-      pilihanB: B. Aglomerasi
-      pilihanC: C. Keterjangkauan
-      pilihanD: D. Nilai kegunaan
-      jawabanBenar: C
-    - teksSoal: Perubahan penggunaan lahan dari hutan menjadi permukiman dapat menyebabkan
-        ....
-      pilihanA: A. Bertambahnya daerah resapan air
-      pilihanB: B. Menurunnya risiko banjir
-      pilihanC: C. Berkurangnya keanekaragaman hayati
-      pilihanD: D. Meningkatnya kualitas udara
-      jawabanBenar: C
-    - teksSoal: Peta yang digunakan untuk menunjukkan persebaran penduduk termasuk
-        jenis peta ....
-      pilihanA: A. Umum
-      pilihanB: B. Topografi
-      pilihanC: C. Tematik
-      pilihanD: D. Kadaster
-      jawabanBenar: C
-  - namaBab: EKONOMI
-    kumpulanSoal:
-    - teksSoal: Seorang pengusaha roti membeli tepung, mengolahnya menjadi roti,
-        lalu menjualnya ke pasar. Kegiatan yang dilakukan berturut-turut adalah ....
-      pilihanA: "A. Konsumsi\u2013produksi\u2013distribusi"
-      pilihanB: "B. Produksi\u2013konsumsi\u2013distribusi"
-      pilihanC: "C. Distribusi\u2013produksi\u2013konsumsi"
-      pilihanD: "D. Produksi\u2013distribusi\u2013konsumsi"
-      jawabanBenar: D
-    - teksSoal: Kelangkaan dalam ekonomi terjadi karena ....
-      pilihanA: A. Kebutuhan manusia terbatas
-      pilihanB: B. Alat pemuas kebutuhan tidak terbatas
-      pilihanC: C. Kebutuhan manusia tidak terbatas sementara sumber daya terbatas
-      pilihanD: D. Semua barang mudah diperoleh
-      jawabanBenar: C
-    - teksSoal: Jika harga suatu barang naik drastis dan masyarakat tetap membeli
-        barang tersebut karena sangat dibutuhkan, maka barang tersebut termasuk ....
-      pilihanA: A. Barang mewah
-      pilihanB: B. Barang substitusi
-      pilihanC: C. Barang komplementer
-      pilihanD: D. Barang kebutuhan pokok
-      jawabanBenar: D
-    - teksSoal: Berikut yang termasuk kegiatan distribusi adalah ....
-      pilihanA: A. Petani menanam padi
-      pilihanB: B. Pabrik membuat sepatu
-      pilihanC: C. Pedagang mengirim barang ke toko
-      pilihanD: D. Konsumen membeli makanan
-      jawabanBenar: C
-    - teksSoal: Tujuan utama produsen meningkatkan kualitas produknya adalah ....
-      pilihanA: A. Mengurangi kebutuhan masyarakat
-      pilihanB: B. Memenuhi kebutuhan dan menarik konsumen
-      pilihanC: C. Mengurangi jumlah barang di pasar
-      pilihanD: D. Menghilangkan persaingan
+    - teksSoal: Mengapa sampah yang menumpuk dapat menyebabkan penyakit?
+      pilihanA: Karena sampah menghasilkan makanan sehat
+      pilihanB: ' Karena dapat menjadi tempat berkembang biaknya organisme pembawa
+        penyakit'
+      pilihanC: Karena membuat udara menjadi dingin
+      pilihanD: Karena membuat tanaman tumbuh cepat
       jawabanBenar: B
-  - namaBab: SOSIOLOGI
-    kumpulanSoal:
-    - teksSoal: Kerja sama antara warga untuk membersihkan lingkungan merupakan bentuk
-        interaksi sosial yang bersifat ....
-      pilihanA: A. Disosiatif
-      pilihanB: B. Asosiatif
-      pilihanC: C. Konfliktual
-      pilihanD: D. Kompetitif
-      jawabanBenar: B
-    - teksSoal: Norma yang memiliki sanksi paling tegas dalam masyarakat adalah norma
-        ....
-      pilihanA: A. Kesopanan
-      pilihanB: B. Kebiasaan
-      pilihanC: C. Hukum
-      pilihanD: D. Agama
+    - teksSoal: Tindakan yang paling tepat ketika melihat sampah berserakan adalah...
+      pilihanA: Membiarkannya
+      pilihanB: Menendangnya ke jalan
+      pilihanC: Membuangnya pada tempat yang sesuai
+      pilihanD: Menyembunyikannya di semak
       jawabanBenar: C
-    - teksSoal: Perubahan cara berkomunikasi dari surat menjadi media digital merupakan
-        contoh ....
-      pilihanA: A. Interaksi sosial
-      pilihanB: B. Kelompok sosial
-      pilihanC: C. Perubahan sosial
-      pilihanD: D. Mobilitas sosial
-      jawabanBenar: C
-    - teksSoal: Sekelompok siswa yang aktif mengikuti kegiatan pramuka dapat disebut
-        sebagai ....
-      pilihanA: A. Fenomena alam
-      pilihanB: B. Kelompok sosial
-      pilihanC: C. Organisasi ekonomi
-      pilihanD: D. Lembaga politik
-      jawabanBenar: B
-    - teksSoal: Konflik yang terjadi karena perbedaan kepentingan antarkelompok dapat
-        diselesaikan melalui ....
-      pilihanA: A. Kekerasan
-      pilihanB: B. Penghindaran
-      pilihanC: C. Musyawarah
-      pilihanD: D. Pemaksaan
+    - teksSoal: Contoh tindakan Reduce adalah...
+      pilihanA: ' Membawa botol minum sendiri'
+      pilihanB: Membuang botol ke sungai
+      pilihanC: Membakar semua sampah
+      pilihanD: Membeli banyak plastik sekali pakai
+      jawabanBenar: A
+    - teksSoal: Apa akibat membuang sampah ke sungai?
+      pilihanA: Air menjadi lebih bersih
+      pilihanB: Sungai menjadi lebih indah
+      pilihanC: Dapat menyebabkan pencemaran dan banjir
+      pilihanD: Ikan menjadi semakin banyak
       jawabanBenar: C
   panelPilihBab: {fileID: 209564866}
   panelGameKuis: {fileID: 874091586}
