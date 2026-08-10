@@ -50,7 +50,7 @@ public class CameraFollow : MonoBehaviour
         }
         else if (y > batasAtas)
         {
-            desiredPosition.x = Mathf.Min(desiredPosition.x, 68f);
+            desiredPosition.x = Mathf.Min(desiredPosition.x, 65f);
         }
         else if (y > batasTengah)
         {

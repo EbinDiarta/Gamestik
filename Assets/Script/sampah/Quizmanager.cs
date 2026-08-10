@@ -212,19 +212,28 @@ public class QuizManager : MonoBehaviour
     }
 
     private void TimeUp()
+{
+    StopTimer();
+
+    Time.timeScale = 1;
+
+    quizAktif = false;
+
+    ClearQuizTrash();
+
+    quizPanel.SetActive(false);
+
+    if (touchedTrash != null)
     {
-        StopTimer();
-
-        foreach (DragTrash drag in currentTrashList)
-        {
-            if (drag != null)
-            {
-                drag.ResetPosition();
-            }
-        }
-
-        StartTimer();
+        touchedTrash.gameObject.SetActive(true);
     }
+
+    touchedTrash = null;
+
+    UpdateTimer();
+
+    Debug.Log("Waktu habis! Keluar dari quiz.");
+}
 
     public void CheckDrop(
         DragTrash dragTrash,

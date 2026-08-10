@@ -1,32 +1,29 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class oknum : MonoBehaviour
-{
-    public GameObject Oknum;
-    
+public class kemusuh : MonoBehaviour
+{ 
     public GameObject ui;
     private bool posisi = false;
 
-    public static bool sudahNgomong = false;
-    
     void Start()
     {
         ui.SetActive(false);
     }
 
     void Update(){
-        if (posisi && Input.GetKeyDown(KeyCode.E)){
-            if (!sudahNgomong)
-            {
-               Intro.instance.Babak1_Kamar();
-                sudahNgomong = true;
-                ui.SetActive(false);
-            }
+        if (posisi && Input.GetKeyDown(KeyCode.F)){
+            if (Sound.instance != null)
+        {
+            Sound.instance.PlaySFX(Sound.instance.tab);
+        }
+        SceneManager.LoadScene(SceneData.misi);
         }
     }
 
-
-     void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
@@ -43,3 +40,4 @@ public class oknum : MonoBehaviour
         }
     }
 }
+

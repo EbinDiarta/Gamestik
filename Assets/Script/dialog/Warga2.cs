@@ -5,16 +5,42 @@ using UnityEngine;
 public class Warga2 : MonoBehaviour
 {
 
+    public GameObject ui;
+    private bool posisi = false;
+
     public static bool sudahNgomong = false;
-
-
-    private void OnTriggerEnter2D(Collider2D other)
+    
+    void Start()
     {
-        if (other.CompareTag("Player") &&
-            !sudahNgomong)
+        ui.SetActive(false);
+    }
+
+    void Update(){
+        if (posisi && Input.GetKeyDown(KeyCode.E)){
+            if (!sudahNgomong)
+            {
+               Intro.instance.Ojol();
+                sudahNgomong = true;
+                ui.SetActive(false);
+            }
+        }
+    }
+
+
+     void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
         {
-            sudahNgomong = true;
-            Intro.instance.Ojol();
+            posisi = true;
+            ui.SetActive(true);
+        }
+    }
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            posisi = false;
+            ui.SetActive(false);
         }
     }
 }
