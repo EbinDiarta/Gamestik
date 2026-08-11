@@ -21,7 +21,6 @@ public class SceneResume : MonoBehaviour
         }
     }
 
-    // Simpan data player
     public void SavePlayer(Vector3 position, string sceneName)
     {
         playerPosition = position;
@@ -29,7 +28,6 @@ public class SceneResume : MonoBehaviour
         hasSavedPosition = true;
     }
 
-    // Reset (optional)
     public void ResetData()
     {
         hasSavedPosition = false;
