@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class fight : MonoBehaviour
 {
@@ -27,8 +28,10 @@ public class fight : MonoBehaviour
 
         if (stamina <= 0)
         {
-            NPCPatrol1.instance.StartPatrol();
-            NPCPatrol.instance.kalah();
+        int win = PlayerPrefs.GetInt("win", 1);
+        
+        PlayerPrefs.SetInt("winning" + win, 1);  
+            SceneManager.LoadScene(SceneData.misi);
         }  
     }
 
