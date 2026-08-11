@@ -17,6 +17,20 @@ string[] babak1_kamar =
     "Arik : Iya, Pak. Terima kasih."
 };
 
+string[] Tomas =
+{
+    "Pak Tomas : Arik, sini sebentar.",
+    "Arik : Iya, Pak. Ada apa?",
+    "Pak Tomas : Bapak lihat banyak sampah berserakan di sepanjang jalan.",
+    "Arik : Oh, iya Pak. Kelihatannya memang cukup banyak.",
+    "Pak Tomas : Bapak ingin kamu membantu membersihkan sampah-sampah itu.",
+    "Arik : Jadi saya harus membersihkan jalan itu, Pak?",
+    "Pak Tomas : Betul. Tolong kumpulkan semua sampah yang berserakan dan buang ke tempat sampah.",
+    "Arik : Baik, Pak. Saya akan segera membersihkannya.",
+    "Pak Tomas : Bagus. Jangan lupa hati-hati saat membersihkan.",
+    "Arik : Siap, Pak Tomas!"
+};
+
 string[] babak1_jalan =
 {
     "Arik: Pak, maaf... sampahnya jangan dibuang ke kali, Pak.",
@@ -306,5 +320,9 @@ string[] babak5_setelahBanjir =
     public void Leon()
     {
         StartDialog(babak_sampah);
+    }
+    public void Guru()
+    {
+        StartDialog(Tomas);
     }
 }
