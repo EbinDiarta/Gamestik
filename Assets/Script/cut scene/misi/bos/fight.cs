@@ -30,9 +30,7 @@ public class fight : MonoBehaviour
         {
         int win = PlayerPrefs.GetInt("win", 1);
         
-        PlayerPrefs.SetInt("winning" + win, 1);
-
-            Spawner.instance.StopSampah();    
+        PlayerPrefs.SetInt("winning" + win, 1);  
             SceneManager.LoadScene(SceneData.misi);
         }  
     }

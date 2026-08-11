@@ -328,7 +328,9 @@ public class QuizManager : MonoBehaviour
         Trash[] remainingTrash =
             FindObjectsOfType<Trash>();
 
-        if (score == 100)
+        int win = PlayerPrefs.GetInt("win", 1);
+        PlayerPrefs.SetInt("winning" + win, 1);
+        if (win == 1 && score == 100)
         {
             FinishGame();
         }

@@ -19,22 +19,7 @@ public class Spawner : MonoBehaviour
 
     void Start()
     {
-        smph = true;
-    }
-
-    void Update()
-    {
-            StartCoroutine(LoopSampah());    
-    }
-
-    public void StopSampah()
-    {
-        int win = PlayerPrefs.GetInt("win", 1);
-        PlayerPrefs.SetInt("winning" + win, 1);
-        if (win == 1)
-        {
-        smph = false;
-        }
+        SpawnTrash();
     }
 
     IEnumerator LoopSampah()
@@ -52,7 +37,7 @@ public class Spawner : MonoBehaviour
         while (smph)
         {
             SpawnTrash();
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(30f);
         }
     }
 
