@@ -41,7 +41,6 @@ public class DialogManager : MonoBehaviour
     {
         if (!isDialogActive) return;
 
-        // Press 'E' to Skip Entire Dialog
         if (Input.GetKeyDown(KeyCode.E))
         {
             EndDialog();

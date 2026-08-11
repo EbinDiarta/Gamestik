@@ -17,8 +17,7 @@ public class BossCutscene : MonoBehaviour
 
     [Header("Boss & Dialog Setup")]
     [SerializeField] private GameObject bossObject;
-    [SerializeField] private DialogManager dialogManager;
-    [SerializeField] private BossBattlePhase1 bossBattlePhase1;
+    [SerializeField] private DialogManager dialogManager; 
 
     private bool isTriggered = false;
 
@@ -82,11 +81,6 @@ public class BossCutscene : MonoBehaviour
         if (playerController != null)
         {
             playerController.enabled = true;
-        }
-
-        if (bossBattlePhase1 != null)
-        {
-            bossBattlePhase1.StartPhase1Battle();
         }
     }
 
