@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class NPCPatrol : MonoBehaviour
 {
-    public static NPCPatrol instance;
     public Transform titikA;
     public Transform titikB;
     public float speed = 2f;
@@ -11,30 +10,11 @@ public class NPCPatrol : MonoBehaviour
 
     public Animator anim;
 
-    public bool patt = true;
-
     private Vector3 target;
     private SpriteRenderer sr;
 
     void Start()
     {
-        patt = true;
-    }
-
-    void Awake()
-    {
-        instance = this;
-    }
-
-    public void kalah()
-    {
-        patt = false;
-        
-    }
-
-    void Update()
-    {
-        if (patt){
         sr = GetComponent<SpriteRenderer>();
 
         if (titikA == null || titikB == null)
@@ -46,7 +26,6 @@ public class NPCPatrol : MonoBehaviour
         target = titikB.position;
 
         StartCoroutine(PatrolRoutine());
-        }
     }
 
     IEnumerator PatrolRoutine()
