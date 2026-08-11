@@ -303,7 +303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 224593981}
   fadePanel: {fileID: 1075056955}
-  mc: {fileID: 0}
+  mc: {fileID: 669959661}
   tujuan: {fileID: 1459535335}
 --- !u!61 &63323844
 BoxCollider2D:
@@ -1003,7 +1003,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 224593981}
   fadePanel: {fileID: 1075056955}
-  mc: {fileID: 0}
+  mc: {fileID: 1918751530}
   tujuan: {fileID: 121879184}
 --- !u!224 &274500830 stripped
 RectTransform:
@@ -1654,7 +1654,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 224593981}
   fadePanel: {fileID: 1075056955}
-  mc: {fileID: 0}
+  mc: {fileID: 1918751530}
   tujuan: {fileID: 1625009054}
 --- !u!1 &422683358
 GameObject:
@@ -1820,7 +1820,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 224593981}
   fadePanel: {fileID: 1075056955}
-  mc: {fileID: 0}
+  mc: {fileID: 1918751530}
   tujuan: {fileID: 1819180899}
 --- !u!61 &454177036
 BoxCollider2D:
@@ -5889,7 +5889,6 @@ GameObject:
   - component: {fileID: 667343745}
   - component: {fileID: 667343744}
   - component: {fileID: 667343743}
-  - component: {fileID: 667343742}
   m_Layer: 0
   m_Name: sklh to jmbtn
   m_TagString: Untagged
@@ -5906,28 +5905,12 @@ Transform:
   m_GameObject: {fileID: 667343740}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 32.6, y: 8.0805, z: 0.5341344}
+  m_LocalPosition: {x: 35.1, y: 8.0805, z: 0.5341344}
   m_LocalScale: {x: 1.3973, y: 15.283547, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1837667813}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &667343742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 667343740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8651b87862d827940b7682864ca24060, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 224593981}
-  fadePanel: {fileID: 1075056955}
-  mc: {fileID: 0}
-  tujuan: {fileID: 422683359}
 --- !u!61 &667343743
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5957,7 +5940,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -12244,7 +12227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 224593981}
   fadePanel: {fileID: 1075056955}
-  mc: {fileID: 0}
+  mc: {fileID: 1918751530}
   tujuan: {fileID: 1003042917}
 --- !u!61 &1710749834
 BoxCollider2D:
