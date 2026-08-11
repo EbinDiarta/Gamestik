@@ -23,7 +23,13 @@ public class fight : MonoBehaviour
         {
             stamina -= 3f;
             HealdBar.value = stamina;
-        }    
+        }  
+
+        if (stamina <= 0)
+        {
+            NPCPatrol1.instance.StartPatrol();
+            NPCPatrol.instance.kalah();
+        }  
     }
 
     void OnTriggerEnter2D(Collider2D collision)

@@ -1,9 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-public class NPCPatrol : MonoBehaviour
+public class NPCPatrol1 : MonoBehaviour
 {
-    public static NPCPatrol instance;
+    public static NPCPatrol1 instance;
     public Transform titikA;
     public Transform titikB;
     public float speed = 2f;
@@ -11,14 +11,14 @@ public class NPCPatrol : MonoBehaviour
 
     public Animator anim;
 
-    public bool patt = true;
+    public bool isPatrolling = true;
 
     private Vector3 target;
     private SpriteRenderer sr;
 
     void Start()
     {
-        patt = true;
+        isPatrolling = false;
     }
 
     void Awake()
@@ -26,15 +26,14 @@ public class NPCPatrol : MonoBehaviour
         instance = this;
     }
 
-    public void kalah()
+    public void StartPatrol()
     {
-        patt = false;
-        
+        isPatrolling = true;
     }
 
     void Update()
     {
-        if (patt){
+        if (isPatrolling){
         sr = GetComponent<SpriteRenderer>();
 
         if (titikA == null || titikB == null)
