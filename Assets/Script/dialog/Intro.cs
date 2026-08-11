@@ -26,6 +26,19 @@ string[] babak1_jalan =
     "Pak Darno: Kamu masih kecil, mana ngerti urusan orang gede."
 };
 
+string[] babak_sampah =
+{
+    "Leon : Rik, kok banyak banget sampah di sekitar sini?",
+    "Arik : Iya, Bang. Padahal tempat sampah sudah disediakan.",
+    "Leon : Masih banyak orang yang buang sampah sembarangan.",
+    "Arik : Kalau terus dibiarkan, lingkungan bisa jadi kotor.",
+    "Leon : Benar. Sampah juga bisa menyumbat selokan dan menyebabkan banjir.",
+    "Arik : Berarti kita harus mulai menjaga kebersihan dari diri sendiri.",
+    "Leon : Betul, Rik. Buang sampah pada tempatnya itu hal kecil, tapi penting.",
+    "Arik : Kalau begitu, ayo kita bersihkan sampah yang ada di sekitar sini.",
+    "Leon : Siap! Bersama-sama menjaga lingkungan."
+};
+
 string[] babak1_sekolah =
 {
     "Arik : Pagi Pak...",
@@ -289,5 +302,9 @@ string[] babak5_setelahBanjir =
     public void banjir()
     {
         StartDialog(babak5_setelahBanjir);
+    }
+    public void Leon()
+    {
+        StartDialog(babak_sampah);
     }
 }

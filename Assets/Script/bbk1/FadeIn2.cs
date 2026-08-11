@@ -4,6 +4,7 @@ using System.Collections;
 
 public class FadeIn2 : MonoBehaviour
 {
+    public static FadeIn2 instance;
     public GameObject UI; 
     public Image fadePanel;
     public CameraFollow cam;
@@ -14,7 +15,10 @@ public class FadeIn2 : MonoBehaviour
         UI.SetActive(false);
     }
 
-
+    void Awake()
+    {
+            instance = this;
+    }
 
     IEnumerator Intro()
     {
@@ -40,7 +44,7 @@ public class FadeIn2 : MonoBehaviour
     {
         float t = 0;
 
-        while (t < 1)
+        while (t < 2)
         {
             t += Time.deltaTime * 3f;
 
@@ -60,7 +64,7 @@ public class FadeIn2 : MonoBehaviour
     {
         float t = 0;
 
-        while (t < 1)
+        while (t < 2)
         {
             t += Time.deltaTime * 3f;
 

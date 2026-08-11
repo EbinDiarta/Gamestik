@@ -28,7 +28,7 @@ public class FadeIn1 : MonoBehaviour
     }
     public void fade()
     {
-        StartCoroutine(FadeIn()); // dari hitam ke transparan
+        StartCoroutine(FadeIn()); 
 
     }
     IEnumerator FadeIn()
