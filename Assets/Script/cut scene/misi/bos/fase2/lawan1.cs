@@ -13,7 +13,7 @@ public class lawan1 : MonoBehaviour
     public bool kena = false;
 
     KeyCode cit;
-    float timer = 1f;
+    float timer = 0.05f;
 
     void Start()
     {
@@ -54,6 +54,8 @@ public class lawan1 : MonoBehaviour
 
         if (timer <= 0f)
         {
+            
+            panelKeycode.SetActive(false);
             lawan12.instance.Dead();
             tembak12.instance.setTembak();
 

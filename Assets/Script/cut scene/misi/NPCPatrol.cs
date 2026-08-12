@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class NPCPatrol : MonoBehaviour
 {
+    public static NPCPatrol instance;
     public Transform titikA;
     public Transform titikB;
     public float speed = 2f;
@@ -13,7 +14,12 @@ public class NPCPatrol : MonoBehaviour
     private Vector3 target;
     private SpriteRenderer sr;
 
-    void Start()
+    void Awake()
+    {
+        instance = this;
+    }
+    
+    public void gasss()
     {
         sr = GetComponent<SpriteRenderer>();
 
