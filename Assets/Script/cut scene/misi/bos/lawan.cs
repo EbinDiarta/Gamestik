@@ -1,37 +1,37 @@
-using System.Collections;
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class lawan : MonoBehaviour
 {
-    public Slider Heald;
+     public Slider Heald;
     public float drh = 100f;
-    
-    private bool leo = false;
 
-    void Update()
+    void Start()
     {
-        if (leo)
+        Heald.maxValue = drh;
+        Heald.value = drh;
+    }
+
+    void Dead()
+    {
+        drh -= 10f;
+        drh = Mathf.Clamp(drh, 0f, 100f);
+
+        Heald.value = drh;
+
+        if (drh <= 0f)
         {
-            drh -= 5f;
-            Heald.value = drh;
-            leo = false;
-        }    
+            SceneManager.LoadScene(SceneData.home);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("peluru"))
         {
-            leo = true;
-        }
-    }
-    void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            leo = false;
+            Dead();
         }
     }
 }

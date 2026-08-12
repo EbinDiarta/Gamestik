@@ -22,9 +22,16 @@ public class fight : MonoBehaviour
     {
         if (leo && Input.GetKeyDown(KeyCode.X))
         {
-            stamina -= 3f;
-            HealdBar.value = stamina;
+            StartCoroutine(UseStamina());
         }  
+
+    }
+
+    IEnumerator UseStamina()
+    {
+        yield return new WaitForSeconds(0f);
+        stamina -= 5f;
+        HealdBar.value = stamina;
 
         if (stamina <= 0)
         {

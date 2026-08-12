@@ -11219,7 +11219,6 @@ GameObject:
   - component: {fileID: 1940541386}
   - component: {fileID: 1940541385}
   - component: {fileID: 1940541390}
-  - component: {fileID: 1940541391}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Player
@@ -11307,7 +11306,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.59, y: 1.33}
+    oldSize: {x: 0.6, y: 1.23}
     newSize: {x: 0.45, y: 1.41}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -11357,7 +11356,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -777690014, guid: 094c17c37b4a4c246b7fc80b2f9a83a6, type: 3}
+  m_Sprite: {fileID: -282597974, guid: 18657b775cf8a864789bdceb9cda988e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -11405,21 +11404,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1940541391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1940541383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80a0dcf07fd9be54f9cf3e5c0315d851, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HealdBar: {fileID: 1604988229}
-  stamina: 100
-  ui: {fileID: 338112837}
 --- !u!1 &2056251530
 GameObject:
   m_ObjectHideFlags: 0
