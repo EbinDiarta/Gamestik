@@ -11,16 +11,7 @@ public class pintu : MonoBehaviour
         ui.SetActive(false);
     }
 
-    void Update(){
-        if (posisi && Input.GetKeyDown(KeyCode.E)){
-            if (Sound.instance != null)
-        {
-            Sound.instance.PlaySFX(Sound.instance.tab);
-        }
-        PlayerPrefs.SetInt("useSpawn", 1);
-        SceneManager.LoadScene(SceneData.rumah);
-        }
-    }
+
 
     void OnTriggerEnter2D(Collider2D collision)
     {

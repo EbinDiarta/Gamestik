@@ -14,9 +14,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ending.unity
     guid: 315f545feca2d364d84ac58a48a14e3b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/rumah.unity
     guid: 98830d1a4f424fa47a26040b7ca831e0
+  - enabled: 1
+    path: Assets/Scenes/fase.unity
+    guid: 19990c3e1cfcec144a198780005e087c
   - enabled: 1
     path: Assets/Scenes/halaman.unity
     guid: f2da13ce128f1354fb543b712ff62a4c

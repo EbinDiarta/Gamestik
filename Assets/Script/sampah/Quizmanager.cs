@@ -327,10 +327,7 @@ public class QuizManager : MonoBehaviour
     {
         Trash[] remainingTrash =
             FindObjectsOfType<Trash>();
-
-        int win = PlayerPrefs.GetInt("win", 1);
-        PlayerPrefs.SetInt("winning" + win, 1);
-        if (win == 1 && score == 100)
+        if (score == 100)
         {
             FinishGame();
         }
@@ -348,7 +345,7 @@ public class QuizManager : MonoBehaviour
         Debug.Log("SKOR AKHIR : " + score);
 
         SceneManager.LoadScene(
-            SceneData.ending
+            SceneData.stlhbanjir
         );
     }
 }

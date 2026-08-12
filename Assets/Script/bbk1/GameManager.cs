@@ -54,14 +54,7 @@ public class GameManager : MonoBehaviour
         Pause.SetActive(false);
         PauseBtn.SetActive(true);
     }
-    public void exit()
-    {
-        if (Sound.instance != null)
-        {
-            Sound.instance.PlaySFX(Sound.instance.tab);
-        }
-        SceneManager.LoadScene(SceneData.rumah);
-    }
+
     public void masuk_kamar()
 {
     if (Sound.instance != null)
@@ -86,15 +79,6 @@ public class GameManager : MonoBehaviour
     Sound.instance.PlayMusic(Sound.instance.Halaman);
     SceneManager.LoadScene(SceneData.halaman);
 }
-    public void masukRumah()
-    {
-        if (Sound.instance != null)
-        {
-            Sound.instance.PlaySFX(Sound.instance.tab);
-        }
-        PlayerPrefs.SetInt("useSpawn", 1);
-        SceneManager.LoadScene(SceneData.rumah);
-    }
 
     public void masukkelas()
     {
