@@ -25,7 +25,10 @@ public class lawan : MonoBehaviour
         {
             SceneManager.LoadScene(SceneData.home);
         }
-    }
+            drh -= 10f;
+            Heald.value = drh;
+            
+        }    
 
     void OnTriggerEnter2D(Collider2D collision)
     {
