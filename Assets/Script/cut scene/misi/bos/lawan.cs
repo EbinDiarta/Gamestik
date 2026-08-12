@@ -14,7 +14,7 @@ public class lawan : MonoBehaviour
     {
         if (leo)
         {
-            drh -= 5f;
+            drh -= 10f;
             Heald.value = drh;
             leo = false;
         }    
