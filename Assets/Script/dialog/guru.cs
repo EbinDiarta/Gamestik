@@ -19,17 +19,13 @@ public class guru : MonoBehaviour
 
     void Update(){
 
-         {
-            int babakAktif = PlayerPrefs.GetInt("BabakAktif", 1);
+        
+        int babakAktif = PlayerPrefs.GetInt("BabakAktif", 1);
         int statusKuis = PlayerPrefs.GetInt("KuisSelesai_Babak_" + babakAktif, 0);
 
-        if (statusKuis == 1)
+        if (babakAktif == 1)
         {
             gr.SetActive(true);
-        }
-        else
-        {
-            gr.SetActive(false);
         }
 
         if (tc && Input.GetKeyDown(KeyCode.E)){
@@ -41,12 +37,11 @@ public class guru : MonoBehaviour
             }
         }
     }
-    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
-       
+        
         {
             tc = true;
             ui.SetActive(true);

@@ -4574,6 +4574,7 @@ GameObject:
   - component: {fileID: 669959662}
   - component: {fileID: 669959665}
   - component: {fileID: 669959666}
+  - component: {fileID: 669959667}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -4738,6 +4739,18 @@ MonoBehaviour:
   panelHitam: {fileID: 1086780931}
   Controller: {fileID: 1560751777}
   durasiFade: 1
+--- !u!114 &669959667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669959660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45347bcf7332e7449b4401140de201d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &697838376
 GameObject:
   m_ObjectHideFlags: 0
