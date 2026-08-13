@@ -4,17 +4,28 @@ using UnityEngine;
 
 public class guru : MonoBehaviour
 {
+    public static guru instance;
     public GameObject ui;
     public GameObject gr;
     private bool tc = false;
 
     public static bool sudahNgomong = false;
     
+    void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
         
         gr.SetActive(false);
         ui.SetActive(false);
+    }
+
+    public void guruuu()
+    {
+            gr.SetActive(true);
     }
 
     void Update(){

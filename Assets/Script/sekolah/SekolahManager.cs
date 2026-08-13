@@ -27,8 +27,8 @@ public class SekolahManager : MonoBehaviour
 
 
         PlayerPrefs.SetInt("KeluarKelas", 1);
-    
         SceneManager.LoadScene(SceneData.halaman);
+        guru.instance.guruuu();
 
     }
 }

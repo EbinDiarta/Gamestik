@@ -22,7 +22,7 @@ public class fight11 : MonoBehaviour
     void Start()
     {
         stamina = 100f;
-
+        leo = false;
         HealdBar.maxValue = 100f;
         HealdBar.value = stamina;
 

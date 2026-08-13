@@ -8,6 +8,7 @@ public class pintu : MonoBehaviour
 
     void Start()
     {
+        posisi = false;
         ui.SetActive(false);
     }
 
