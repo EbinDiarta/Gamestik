@@ -57,7 +57,6 @@ public class guru : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            tc = false;
             ui.SetActive(false);
         }
     }

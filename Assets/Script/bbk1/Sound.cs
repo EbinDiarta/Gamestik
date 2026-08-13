@@ -14,6 +14,7 @@ public class Sound : MonoBehaviour
     public AudioClip homeMusic;
     public AudioClip gameMusic;
     public AudioClip gamePasar;
+    public AudioClip gameEnd;
     public AudioClip Tegang;
     public AudioClip Halaman;
     public AudioClip SetelahBanjir;

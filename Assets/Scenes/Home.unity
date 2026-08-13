@@ -1264,7 +1264,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   homeMusic: {fileID: 8300000, guid: fb359a9a85f00ad4bb1d07d379ead8a1, type: 3}
   gameMusic: {fileID: 8300000, guid: 3ba70b43b271b2c48b9882c4ccd7e95a, type: 3}
-  gamePasar: {fileID: 8300000, guid: 58f7c8b53816d5c4aaf6ee955561830c, type: 3}
+  gamePasar: {fileID: 8300000, guid: f2c7ba54d8e706e4db322289970f9eb1, type: 3}
+  gameEnd: {fileID: 8300000, guid: 4f7738d94c1c6c44997b88e0e5b22ffe, type: 3}
   Tegang: {fileID: 8300000, guid: 8ccbe1db83b95cc40b53d76f5db58962, type: 3}
   Halaman: {fileID: 8300000, guid: 6869af1424770b64a9d99cfbd108f2e9, type: 3}
   SetelahBanjir: {fileID: 8300000, guid: 19d67eb5a7e91504586c802f36ee2740, type: 3}

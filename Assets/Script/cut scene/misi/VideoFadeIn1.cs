@@ -18,7 +18,7 @@ public class VideoFadeIn1 : MonoBehaviour
     void Start()
     {
         Controller.SetActive(false);
-        //Sound.instance.StopMusic();
+        Sound.instance.StopMusic();
         panelHitam.color = new Color(0, 0, 0, 1);
 
         videoPlayer.loopPointReached += OnVideoFinished;
@@ -30,7 +30,7 @@ public class VideoFadeIn1 : MonoBehaviour
 {
     Controller.SetActive(true);
     //StartCoroutine(MatikanVideo());
-    //Sound.instance.PlayMusic(Sound.instance.gameMusic);
+    SoundPasar.instance.Fight();
     NPCPatrol.instance.gasss();
     
     videoPlayer.gameObject.SetActive(false);
