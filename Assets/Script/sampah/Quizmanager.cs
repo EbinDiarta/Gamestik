@@ -345,7 +345,7 @@ public class QuizManager : MonoBehaviour
         Debug.Log("SKOR AKHIR : " + score);
 
         SceneManager.LoadScene(
-            SceneData.stlhbanjir
+            SceneData.Boss
         );
     }
 }
