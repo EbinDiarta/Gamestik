@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-
+using UnityEngine.SceneManagement; 
 public class BossCutscene : MonoBehaviour
 {
     [Header("UI Fade Settings")]
@@ -18,6 +18,9 @@ public class BossCutscene : MonoBehaviour
     [Header("Boss & Dialog Setup")]
     [SerializeField] private GameObject bossObject;
     [SerializeField] private DialogManager dialogManager; 
+
+    [Header("Next Scene Settings")]
+    [SerializeField] private string nextSceneName = "stlhbanjir"; 
 
     private bool isTriggered = false;
 
@@ -62,26 +65,24 @@ public class BossCutscene : MonoBehaviour
 
         if (dialogManager != null)
         {
-            dialogManager.OnDialogCompleted += EnablePlayerControl;
+            // Saat dialog selesai, panggil fungsi OnDialogEnd
+            dialogManager.OnDialogCompleted += OnDialogEnd;
             dialogManager.StartDialog();
         }
         else
         {
-            EnablePlayerControl();
+            OnDialogEnd();
         }
     }
 
-    private void EnablePlayerControl()
+    private void OnDialogEnd()
     {
         if (dialogManager != null)
         {
-            dialogManager.OnDialogCompleted -= EnablePlayerControl;
+            dialogManager.OnDialogCompleted -= OnDialogEnd;
         }
 
-        if (playerController != null)
-        {
-            playerController.enabled = true;
-        }
+        SceneManager.LoadScene(nextSceneName);
     }
 
     private IEnumerator Fade(float startAlpha, float endAlpha)
