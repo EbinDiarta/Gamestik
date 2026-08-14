@@ -19,10 +19,17 @@ public class DragTrash : MonoBehaviour,
         rectTransform = GetComponent<RectTransform>();
     }
 
+    // Method khusus untuk mengunci posisi awal dari Manager
+    public void SetStartPosition(Vector3 newPosition)
+    {
+        if (rectTransform == null) rectTransform = GetComponent<RectTransform>();
+        
+        rectTransform.position = newPosition;
+        startPosition = newPosition; // Kunci koordinat spawn yang benar!
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
-        startPosition = rectTransform.position;
-
         if (canvasGroup != null)
         {
             canvasGroup.blocksRaycasts = false;

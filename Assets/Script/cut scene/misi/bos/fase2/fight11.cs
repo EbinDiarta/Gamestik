@@ -11,9 +11,6 @@ public class fight11 : MonoBehaviour
     public Slider HealdBar;
     public float stamina = 100f;
 
-
-    private bool leo = false;
-
     void Awake()
     {
         instance = this;
@@ -22,23 +19,30 @@ public class fight11 : MonoBehaviour
     void Start()
     {
         stamina = 100f;
-        leo = false;
-        HealdBar.maxValue = 100f;
-        HealdBar.value = stamina;
-
+        if (HealdBar != null)
+        {
+            HealdBar.maxValue = 100f;
+            HealdBar.value = stamina;
+        }
     }
 
     public void over()
     {
         stamina = 100f;
-        HealdBar.value = stamina;
+        if (HealdBar != null)
+        {
+            HealdBar.value = stamina;
+        }
     }
 
     public void benar()
     {
         stamina -= 5f;
 
-        HealdBar.value = stamina;
+        if (HealdBar != null)
+        {
+            HealdBar.value = stamina;
+        }
 
         Debug.Log("Keycode benar! HP lawan: " + stamina);
 
@@ -47,27 +51,9 @@ public class fight11 : MonoBehaviour
             stamina = 0f;
 
             int win = PlayerPrefs.GetInt("win", 1);
-
             PlayerPrefs.SetInt("winning" + win, 1);
 
             SceneManager.LoadScene(SceneData.ending);
-        }
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            leo = true;
-
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            leo = false;
         }
     }
 }
