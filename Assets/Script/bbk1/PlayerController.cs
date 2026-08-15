@@ -151,4 +151,30 @@ public class PlayerController : MonoBehaviour
             rb.velocity.y
         );
     }
+
+    // Method untuk memundurkan Player dari posisi sampah Overworld
+// Method untuk memundurkan Player dari posisi sampah Overworld
+    public void MundurFromTrash(Vector3 trashPosition, float distance = 20f)
+    {
+        // Hitung posisi horizontal (X) antara Player dan Sampah OverWorld
+        float directionX = transform.position.x - trashPosition.x;
+
+        // Jika Player di sebelah kanan sampah, mundur ke kanan (+1). Jika di kiri, mundur ke kiri (-1).
+        float pushDirection = directionX >= 0 ? 1f : -1f;
+
+        // Reset kecepatan pergerakan tombol agar tidak menahan pergeseran
+        currentVelocityX = 0f;
+
+        if (rb != null)
+        {
+            rb.velocity = Vector2.zero; // Hentikan gaya fisik saat ini
+            
+            // Pindahkan posisi Rigidbody2D secara instan di koordinat World Space
+            rb.position = new Vector2(rb.position.x + (pushDirection * distance), rb.position.y);
+        }
+        else
+        {
+            transform.position += new Vector3(pushDirection * distance, 0f, 0f);
+        }
+    }
 }

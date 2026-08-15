@@ -75,12 +75,12 @@ string[] babak1_sekolah =
 
 string[] ojol =
 {
-    "Pak Wowo : Aduh... semakin hari semakin banyak saja sampahnya.",
+    "Pak Ebin : Aduh... semakin hari semakin banyak saja sampahnya.",
     "Raka : Pak, apakah sampah ini sudah ada sejak kemarin?",
-    "Pak Wowo : Sepertinya baru beberapa hari terakhir.",
+    "Pak Ebin : Sepertinya baru beberapa hari terakhir.",
     "Raka : Bapak tahu siapa yang membuangnya?",
-    "Pak Wowo : Tidak tahu.",
-    "Pak Wowo : Tiba-tiba saja sampahnya sudah menumpuk.",
+    "Pak Ebin : Tidak tahu.",
+    "Pak Ebin : Tiba-tiba saja sampahnya sudah menumpuk.",
     "Raka : Aneh sekali."
 };
 

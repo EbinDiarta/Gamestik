@@ -1,39 +1,46 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class DragTrash : MonoBehaviour,
-    IBeginDragHandler,
-    IDragHandler,
-    IEndDragHandler
+public class DragTrash : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    private Vector3 startPosition;
-    private CanvasGroup canvasGroup;
-    private RectTransform rectTransform;
-
     public Trash.TrashType trashType;
-    public Trash currentTrash;
+    public Trash currentTrash; // Variabel penampung referensi objek Trash
+
+    private RectTransform rectTransform;
+    private CanvasGroup canvasGroup;
+    private Vector3 startPosition;
+    private Transform originalParent;
 
     private void Awake()
     {
-        canvasGroup = GetComponent<CanvasGroup>();
         rectTransform = GetComponent<RectTransform>();
+        canvasGroup = GetComponent<CanvasGroup>();
+        if (canvasGroup == null)
+        {
+            canvasGroup = gameObject.AddComponent<CanvasGroup>();
+        }
     }
 
-    // Method khusus untuk mengunci posisi awal dari Manager
-    public void SetStartPosition(Vector3 newPosition)
+    // Dipanggil saat spawn untuk menyimpan posisi asal
+    public void ResetPosition()
     {
         if (rectTransform == null) rectTransform = GetComponent<RectTransform>();
-        
-        rectTransform.position = newPosition;
-        startPosition = newPosition; // Kunci koordinat spawn yang benar!
+        startPosition = rectTransform.position;
+    }
+
+    // Mengembalikan fisik UI secara instan ke koordinat awal
+    public void ReturnToStartPosition()
+    {
+        if (rectTransform == null) rectTransform = GetComponent<RectTransform>();
+        rectTransform.position = startPosition;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (canvasGroup != null)
-        {
-            canvasGroup.blocksRaycasts = false;
-        }
+        originalParent = transform.parent;
+        canvasGroup.blocksRaycasts = false;
+        canvasGroup.alpha = 0.6f;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -43,14 +50,12 @@ public class DragTrash : MonoBehaviour,
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (canvasGroup != null)
-        {
-            canvasGroup.blocksRaycasts = true;
-        }
-    }
+        canvasGroup.blocksRaycasts = true;
+        canvasGroup.alpha = 1.0f;
 
-    public void ResetPosition()
-    {
-        rectTransform.position = startPosition;
+        if (transform.parent == originalParent)
+        {
+            rectTransform.position = startPosition;
+        }
     }
 }

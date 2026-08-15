@@ -13,7 +13,7 @@ public class BossTrashOverworld : MonoBehaviour
             if (player != null && BossQuizManager.instance != null)
             {
                 isTriggered = true;
-                BossQuizManager.instance.OpenBossQuiz(player, this.gameObject);
+                BossQuizManager.instance.OpenBossQuiz(player, gameObject);                
             }
         }
     }

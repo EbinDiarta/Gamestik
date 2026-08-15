@@ -12,7 +12,7 @@ public class BossQuizManager : MonoBehaviour
     public GameObject quizPanel;
     public GameObject dragTrashPrefab; // Prefab UI DragTrash
     public Transform trashContainer;  // Container UI penampung sampah (misi)
-    public TextMeshProUGUI timerText;
+    public TextMeshProUGUI timerText; //
 
     [Header("Boss Quiz Settings")]
     public GameObject[] quizTrashPrefabs; // Array prefab data sampah
@@ -20,219 +20,223 @@ public class BossQuizManager : MonoBehaviour
     public int jumlahSampahQuiz = 5;      // Jumlah sampah UI yang dimunculkan
     public float maxTime = 30f;           // Durasi timer minigame
 
-    [HideInInspector] public bool isQuizActive = false;
+    [HideInInspector] public bool isQuizActive = false; //
 
-    private float currentTime;
-    private bool isTiming;
-    private PlayerController playerController;
-    private GameObject touchedWorldTrash;
+    private float currentTime; //
+    private bool isTiming; //
+    private PlayerController playerController; //
+    private GameObject touchedWorldTrash; // Menyimpan referensi sampah 2D di OverWorld
 
-    private List<DragTrash> currentTrashList = new List<DragTrash>();
+    private List<DragTrash> currentTrashList = new List<DragTrash>(); //
 
     private void Awake()
     {
-        instance = this;
+        instance = this; //
     }
 
     private void Start()
     {
-        if (quizPanel != null) quizPanel.SetActive(false);
+        if (quizPanel != null) quizPanel.SetActive(false); //
     }
 
     private void Update()
     {
-        if (!isTiming) return;
+        if (!isTiming) return; //
 
-        currentTime -= Time.deltaTime;
-        UpdateTimerUI();
+        currentTime -= Time.deltaTime; //
+        UpdateTimerUI(); //
 
         if (currentTime <= 0)
         {
-            currentTime = 0;
-            TimeUp();
+            currentTime = 0; //
+            TimeUp(); //
         }
     }
 
     public void OpenBossQuiz(PlayerController player, GameObject worldTrash)
     {
-        if (isQuizActive) return;
+        if (isQuizActive) return; //
 
-        if (spawnPointsUI == null || spawnPointsUI.Length == 0)
-        {
-            Debug.LogError("SpawnPointsUI belum diisi di Inspector!");
-            return;
-        }
+        playerController = player; //
+        touchedWorldTrash = worldTrash; // Simpan referensi sampah 2D OverWorld yang disentuh
 
-        playerController = player;
-        touchedWorldTrash = worldTrash;
-
-        // 1. Matikan gerak Player
+        // 1. Matikan gerak Player saat Quiz dibuka
         if (playerController != null)
         {
-            playerController.enabled = false;
+            playerController.enabled = false; //
 
-            Rigidbody2D rb = playerController.GetComponent<Rigidbody2D>();
-            if (rb != null) rb.velocity = Vector2.zero;
+            Rigidbody2D rb = playerController.GetComponent<Rigidbody2D>(); //
+            if (rb != null) rb.velocity = Vector2.zero; //
 
-            Animator anim = playerController.GetComponent<Animator>();
-            if (anim != null) anim.SetBool("IsRun", false);
+            Animator anim = playerController.GetComponent<Animator>(); //
+            if (anim != null) anim.SetBool("IsRun", false); //
         }
 
-        ClearQuizTrash();
+        ClearQuizTrash(); //
 
         // 2. Aktifkan Panel UI Minigame
-        if (quizPanel != null) quizPanel.SetActive(true);
+        if (quizPanel != null) quizPanel.SetActive(true); //
 
         // Force Canvas Update agar skala UI siap
-        Canvas.ForceUpdateCanvases();
+        Canvas.ForceUpdateCanvases(); //
 
-        // 3. Acak Spawn Points UI tanpa duplikat
-        List<Transform> availableSpawns = new List<Transform>(spawnPointsUI);
-        int spawnAmount = Mathf.Min(jumlahSampahQuiz, availableSpawns.Count);
-
-        for (int i = 0; i < spawnAmount; i++)
+        // 3. Spawn sampah UI
+        if (spawnPointsUI != null && spawnPointsUI.Length > 0)
         {
-            int randomSpawnIndex = Random.Range(0, availableSpawns.Count);
-            GameObject randomTrashPrefab = quizTrashPrefabs[Random.Range(0, quizTrashPrefabs.Length)];
+            List<Transform> availableSpawns = new List<Transform>(spawnPointsUI); //
+            int spawnAmount = Mathf.Min(jumlahSampahQuiz, availableSpawns.Count); //
 
-            CreateQuizTrashAtSpawn(randomTrashPrefab, availableSpawns[randomSpawnIndex]);
-            availableSpawns.RemoveAt(randomSpawnIndex);
+            for (int i = 0; i < spawnAmount; i++)
+            {
+                int randomSpawnIndex = Random.Range(0, availableSpawns.Count); //
+                GameObject randomTrashPrefab = quizTrashPrefabs[Random.Range(0, quizTrashPrefabs.Length)]; //
+
+                CreateQuizTrashAtSpawn(randomTrashPrefab, availableSpawns[randomSpawnIndex]); //
+                availableSpawns.RemoveAt(randomSpawnIndex); //
+            }
         }
 
-        isQuizActive = true;
-        StartTimer();
+        isQuizActive = true; //
+        StartTimer(); //
     }
 
     private void CreateQuizTrashAtSpawn(GameObject prefab, Transform spawnTarget)
     {
-        if (prefab == null || spawnTarget == null || dragTrashPrefab == null) return;
+        if (prefab == null || dragTrashPrefab == null) return; //
 
-        // 1. Instantiate prefab ke trashContainer
-        GameObject obj = Instantiate(dragTrashPrefab, trashContainer);
-        RectTransform rect = obj.GetComponent<RectTransform>();
-        DragTrash drag = obj.GetComponent<DragTrash>();
-        Trash trash = prefab.GetComponent<Trash>();
+        GameObject obj = Instantiate(dragTrashPrefab, trashContainer); //
+        RectTransform rect = obj.GetComponent<RectTransform>(); //
+        DragTrash drag = obj.GetComponent<DragTrash>(); //
+        Trash trash = prefab.GetComponent<Trash>(); //
 
-        if (rect == null || drag == null || trash == null)
+        if (rect == null || drag == null || trash == null) //
         {
-            Destroy(obj);
-            return;
+            Destroy(obj); //
+            return; //
         }
 
-        // 2. TENTUKAN BATAS LAYAR CANVAS (Screen / Canvas Resolution)
-        // Set Anchor & Pivot ke Center (0.5, 0.5)
-        rect.anchorMin = new Vector2(0.5f, 0.5f);
-        rect.anchorMax = new Vector2(0.5f, 0.5f);
-        rect.pivot = new Vector2(0.5f, 0.5f);
-        rect.localScale = Vector3.one;
+        rect.anchorMin = new Vector2(0.5f, 0.5f); //
+        rect.anchorMax = new Vector2(0.5f, 0.5f); //
+        rect.pivot = new Vector2(0.5f, 0.5f); //
+        rect.localScale = Vector3.one; //
 
-        // 3. AMBIL POSISI DARI SPAWN TARGET & BATASI (CLAMP) DIDALAM LAYAR
-        Vector3 targetWorldPos = spawnTarget.position;
-        rect.position = targetWorldPos;
+        // 1. SET KOORDINAT ACAK UI
+        float randomX = Random.Range(-850f, 850f); //
+        float randomY = Random.Range(-100f, 500f); //
+        rect.anchoredPosition = new Vector2(randomX, randomY); //
 
-        // Kunci koordinat lokal agar tidak terlempar melampaui resolusi 1920x1080 (Batas X: -800s/d 800, Batas Y: -400 s/d 400)
-        Vector2 clampedLocalPos = rect.localPosition;
-        clampedLocalPos.x = Mathf.Clamp(clampedLocalPos.x, -750f, 750f);
-        clampedLocalPos.y = Mathf.Clamp(clampedLocalPos.y, -350f, 350f);
-        
-        rect.localPosition = new Vector3(clampedLocalPos.x, clampedLocalPos.y, 0f);
+        // 2. KUNCI POSISI DENGAN PANGGILAN RESETPOSITION
+        drag.ResetPosition(); //
 
-        // 4. KUNCI POSISI UNTUK SISTEM DRAG
-        drag.SetStartPosition(rect.position);
+        // 3. SET DATA TIPE SAMPAH & SPRITE
+        drag.trashType = trash.jenisSampah; //
+        drag.currentTrash = trash;          // Set referensi trash agar tidak null
 
-        // 5. ATUR DATA TIPE SAMPAH DAN SPRITE IMAGE
-        drag.trashType = trash.jenisSampah;
+        SpriteRenderer spriteRenderer = prefab.GetComponent<SpriteRenderer>(); //
+        Image image = obj.GetComponent<Image>() ?? obj.GetComponentInChildren<Image>(); //
 
-        SpriteRenderer spriteRenderer = prefab.GetComponent<SpriteRenderer>();
-        Image image = obj.GetComponent<Image>() ?? obj.GetComponentInChildren<Image>();
-
-        if (spriteRenderer != null && image != null)
+        if (spriteRenderer != null && image != null) //
         {
-            image.sprite = spriteRenderer.sprite;
-            image.preserveAspect = true;
+            image.sprite = spriteRenderer.sprite; //
+            image.preserveAspect = true; //
         }
 
-        currentTrashList.Add(drag);
+        currentTrashList.Add(drag); //
     }
 
-    public void CheckDrop(DragTrash dragTrash, Trash.TrashType selectedBin)
+   public void CheckDrop(DragTrash dragTrash, Trash.TrashType selectedBin)
     {
-        if (dragTrash == null || !isQuizActive) return;
+        if (dragTrash == null || !isQuizActive) return; //
 
-        if (dragTrash.trashType == selectedBin)
+        // 1. Jika BENAR: Tipe sampah sesuai dengan Tong Sampah
+        if (dragTrash.trashType == selectedBin) //
         {
-            currentTrashList.Remove(dragTrash);
-            Destroy(dragTrash.gameObject);
+            currentTrashList.Remove(dragTrash); //
+            Destroy(dragTrash.gameObject); //
 
-            if (currentTrashList.Count == 0)
+            if (currentTrashList.Count == 0) //
             {
-                FinishBossQuiz();
+                FinishBossQuiz(); //
             }
         }
+        // 2. Jika SALAH: Kembalikan fisik sampah ke posisi semula
         else
         {
-            dragTrash.ResetPosition();
+            dragTrash.ReturnToStartPosition();
         }
     }
 
     private void StartTimer()
     {
-        currentTime = maxTime;
-        isTiming = true;
-        UpdateTimerUI();
+        currentTime = maxTime; //
+        isTiming = true; //
+        UpdateTimerUI(); //
     }
 
     private void UpdateTimerUI()
     {
-        if (timerText != null)
+        if (timerText != null) //
         {
-            timerText.text = "Waktu: " + Mathf.CeilToInt(currentTime);
+            timerText.text = "Waktu: " + Mathf.CeilToInt(currentTime); //
         }
     }
 
     private void TimeUp()
     {
-        CloseQuizUI();
+        // Panggil kegagalan saat waktu habis
+        OnQuizFailed(); //
     }
 
     private void FinishBossQuiz()
     {
-        if (touchedWorldTrash != null)
+        if (touchedWorldTrash != null) //
         {
-            Destroy(touchedWorldTrash);
+            Destroy(touchedWorldTrash); // Hapus sampah OverWorld jika berhasil
         }
 
-        CloseQuizUI();
+        CloseQuizUI(); //
+    }
+
+    public void OnQuizFailed()
+    {
+        CloseQuizUI(); // Tutup UI Quiz
+
+        // Aktifkan kembali Player & dorong mundur dari posisi sampah OverWorld
+        if (playerController != null && touchedWorldTrash != null)
+        {
+            playerController.enabled = true; //
+            playerController.MundurFromTrash(touchedWorldTrash.transform.position, 2f);
+        }
     }
 
     private void CloseQuizUI()
     {
-        isTiming = false;
-        isQuizActive = false;
+        isTiming = false; //
+        isQuizActive = false; //
 
-        ClearQuizTrash();
+        ClearQuizTrash(); //
 
-        if (quizPanel != null) quizPanel.SetActive(false);
+        if (quizPanel != null) quizPanel.SetActive(false); //
 
         if (playerController != null)
         {
-            playerController.enabled = true;
+            playerController.enabled = true; //
         }
     }
 
     private void ClearQuizTrash()
     {
-        foreach (DragTrash drag in currentTrashList)
+        foreach (DragTrash drag in currentTrashList) //
         {
-            if (drag != null) Destroy(drag.gameObject);
+            if (drag != null) Destroy(drag.gameObject); //
         }
-        currentTrashList.Clear();
+        currentTrashList.Clear(); //
 
-        if (trashContainer != null)
+        if (trashContainer != null) //
         {
-            for (int i = trashContainer.childCount - 1; i >= 0; i--)
+            for (int i = trashContainer.childCount - 1; i >= 0; i--) //
             {
-                Destroy(trashContainer.GetChild(i).gameObject);
+                Destroy(trashContainer.GetChild(i).gameObject); //
             }
         }
     }

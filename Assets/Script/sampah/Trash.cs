@@ -19,14 +19,24 @@ public class Trash : MonoBehaviour
     {
         if (playerInside && Input.GetKeyDown(KeyCode.E))
         {
-        if (QuizManager.instance == null)
-            return;
+            PlayerController player = FindObjectOfType<PlayerController>();
 
-        if (QuizManager.instance.quizPanel.activeSelf)
-            return;
+            // 1. Cek jika di Scene Boss (BossQuizManager aktif)
+            if (BossQuizManager.instance != null)
+            {
+                if (BossQuizManager.instance.quizPanel != null && BossQuizManager.instance.quizPanel.activeSelf) 
+                    return;
 
-        QuizManager.instance.OpenQuiz(this);
-    
+                BossQuizManager.instance.OpenBossQuiz(player, this.gameObject);
+            }
+            // 2. Jika bukan Scene Boss, jalankan QuizManager bawaan kamu
+            else if (QuizManager.instance != null)
+            {
+                if (QuizManager.instance.quizPanel != null && QuizManager.instance.quizPanel.activeSelf) 
+                    return;
+
+                QuizManager.instance.OpenQuiz(this);
+            }
         }
     }
 
@@ -37,14 +47,15 @@ public class Trash : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             playerInside = true;
         }
     }
+
     private void OnTriggerExit2D(Collider2D other)
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             playerInside = false;
         }

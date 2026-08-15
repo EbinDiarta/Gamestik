@@ -1306,6 +1306,9 @@ MonoBehaviour:
   - {fileID: 288771272784687545, guid: 5f0ae4f04d3da5c4aa4b4213b1934ca0, type: 3}
   spawn:
   - {fileID: 1588170985}
+  - {fileID: 1234710385}
+  - {fileID: 708088051}
+  - {fileID: 216748537}
   miniBoss: {fileID: 0}
 --- !u!1 &321623394
 GameObject:
