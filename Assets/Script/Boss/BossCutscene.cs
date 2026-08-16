@@ -20,7 +20,7 @@ public class BossCutscene : MonoBehaviour
     [SerializeField] private DialogManager dialogManager; 
 
     [Header("Next Scene Settings")]
-    [SerializeField] private string nextSceneName = "stlhbanjir"; 
+    [SerializeField] //private string nextSceneName = "stlhbanjir"; 
 
     private bool isTriggered = false;
 
@@ -65,7 +65,6 @@ public class BossCutscene : MonoBehaviour
 
         if (dialogManager != null)
         {
-            // Saat dialog selesai, panggil fungsi OnDialogEnd
             dialogManager.OnDialogCompleted += OnDialogEnd;
             dialogManager.StartDialog();
         }
@@ -82,7 +81,7 @@ public class BossCutscene : MonoBehaviour
             dialogManager.OnDialogCompleted -= OnDialogEnd;
         }
 
-        SceneManager.LoadScene(nextSceneName);
+        SceneManager.LoadScene(SceneData.stlhbanjir);
     }
 
     private IEnumerator Fade(float startAlpha, float endAlpha)

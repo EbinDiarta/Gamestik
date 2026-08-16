@@ -13,7 +13,7 @@ public class lawan1 : MonoBehaviour
     public bool kena = false;
 
     KeyCode cit;
-    float timer = 0.05f;
+    float timer = 0.002f;
 
     void Start()
     {

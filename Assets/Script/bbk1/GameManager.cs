@@ -4,7 +4,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GameObject Pause;
-    public GameObject PauseBtn;
+    public bool puse = false;
+    
 
 
     
@@ -12,15 +13,27 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (Pause.activeSelf)
-            {
-                resume();
-            }
-            else
-            {
-                pause();
-            }
+            if (Sound.instance != null)
+        {
+            Sound.instance.PlaySFX(Sound.instance.tab);
         }
+        Time.timeScale = 0f;
+        Pause.SetActive(true);
+        puse = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            if (Sound.instance != null)
+        {
+            Sound.instance.PlaySFX(Sound.instance.tab);
+        }
+        Time.timeScale = 1f;
+        Pause.SetActive(false);
+        puse = false;
+        }
+
+
     }
 
     public void pause()
@@ -31,7 +44,6 @@ public class GameManager : MonoBehaviour
         }
         Time.timeScale = 0f;
         Pause.SetActive(true);
-        PauseBtn.SetActive(false);
     }
     public void restart()
     {
@@ -42,7 +54,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale= 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Pause.SetActive(false);
-        PauseBtn.SetActive(true);
     }
     public void resume()
     {
@@ -52,7 +63,6 @@ public class GameManager : MonoBehaviour
         }
         Time.timeScale= 1f;
         Pause.SetActive(false);
-        PauseBtn.SetActive(true);
     }
 
     public void masuk_kamar()

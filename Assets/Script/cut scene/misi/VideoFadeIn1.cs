@@ -17,8 +17,8 @@ public class VideoFadeIn1 : MonoBehaviour
 
     void Start()
     {
-        Controller.SetActive(false);
         Sound.instance.StopMusic();
+        Controller.SetActive(false);
         panelHitam.color = new Color(0, 0, 0, 1);
 
         videoPlayer.loopPointReached += OnVideoFinished;
