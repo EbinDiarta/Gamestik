@@ -190,7 +190,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -251, y: 163}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &33260179
@@ -224,8 +224,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 2818572287
-  m_fontColor: {r: 1, g: 1, b: 1, a: 0.654902}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -278,7 +278,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -503.36652, w: -84.30768}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2202,8 +2202,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1330200457}
-  - {fileID: 1214114515}
   - {fileID: 1726842735}
   - {fileID: 33260178}
   m_Father: {fileID: 2063903228}
@@ -2226,7 +2224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.60784316}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3228,7 +3226,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -94.24795, y: 29.919985, z: 0, w: -78.290665}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3773,81 +3771,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 485492015}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1214114514
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1214114515}
-  - component: {fileID: 1214114517}
-  - component: {fileID: 1214114516}
-  m_Layer: 5
-  m_Name: PanelTeks
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1214114515
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1214114514}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 374890911}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 120}
-  m_SizeDelta: {x: 773.8063, y: 187}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1214114516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1214114514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0a9b51fa39f52ca4f91ff4c7f3819164, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1214114517
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1214114514}
-  m_CullTransparentMesh: 1
 --- !u!1 &1241308071
 GameObject:
   m_ObjectHideFlags: 0
@@ -3978,81 +3901,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1330200456
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1330200457}
-  - component: {fileID: 1330200459}
-  - component: {fileID: 1330200458}
-  m_Layer: 5
-  m_Name: PanelNama
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1330200457
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1330200456}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 374890911}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -305.8647, y: -14.059108}
-  m_SizeDelta: {x: 179.9385, y: 81.1186}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1330200458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1330200456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.70980394}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a5fc56f7075eb5643a794f2b4c05ed61, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1330200459
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1330200456}
-  m_CullTransparentMesh: 1
 --- !u!1 &1349547601
 GameObject:
   m_ObjectHideFlags: 0
@@ -6722,8 +6570,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -308.05643, y: -8.895805}
-  m_SizeDelta: {x: 137.5885, y: 47.0797}
+  m_AnchoredPosition: {x: -272, y: 177}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1726842736
 MonoBehaviour:
@@ -6754,8 +6602,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4279045389
-  m_fontColor: {r: 0.04905659, g: 0.04905659, b: 0.04905659, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6772,15 +6620,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -6808,7 +6656,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 6.8758163, y: -9.247791, z: 4.231331, w: -10.773212}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -7379,17 +7227,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1884913066}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6a9ec55ec786f64188befc2b4077b68, type: 3}
+  m_Script: {fileID: 11500000, guid: 4cce323859eaf86439690c0c1215384e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fadeCanvasGroup: {fileID: 745170513}
   fadeDuration: 1
   holdBlackDuration: 0.5
-  playerController: {fileID: 1089460029}
-  useTeleport: 1
-  playerBossPosition: {x: 26, y: -4.094215}
-  bossObject: {fileID: 1654788899}
-  dialogManager: {fileID: 2063903229}
+  dialogPanel: {fileID: 374890910}
+  dialogText: {fileID: 0}
+  playerObject: {fileID: 1089460026}
+  teleportTargetPoint: {fileID: 0}
+  bossObject: {fileID: 0}
   nextSceneName: stlhbanjir
 --- !u!1 &1929692013
 GameObject:
@@ -7549,48 +7397,14 @@ MonoBehaviour:
   nameText: {fileID: 1726842736}
   sentenceText: {fileID: 33260179}
   skipInstructionUI: {fileID: 858506053}
-  fadeCanvasGroup: {fileID: 745170513}
-  fadeDuration: 0.5
-  blackScreenDuration: 0.2
   typingSpeed: 0.04
   dialogLines:
-  - speakerName: ??
-    sentence: Akhirnya kamu datang, Raka...
-  - speakerName: Raka
-    sentence: Kamu.....
-  - speakerName: Raka
-    sentence: Siapa??!!
-  - speakerName: ??
-    sentence: Panggil saja aku..
-  - speakerName: Trash Monster
-    sentence: TRASH MONSTERRR.....
-  - speakerName: Raka
-    sentence: Jadi kamu yang menyebabkan semua sampah ini terus muncul?
-  - speakerName: Trash Monter
-    sentence: Salah.... Aku hanya memberikan apa yang kalian ciptakan
-  - speakerName: Raka
-    sentence: Apa maksudmu??
-  - speakerName: Trash Monster
-    sentence: Sampah yang dibuang sembarangan. Sungai yang dicemari. Lingkungan yang
-      kalian abaikan.
-  - speakerName: Trash Monster
-    sentence: Semua itu.. adalah sumber kekuatanku..
-  - speakerName: Raka
-    sentence: Kalau begitu, aku akan menghentikanmu
-  - speakerName: Trash Monster
-    sentence: Kamu pikir membersihkan beberapa sampah bisa mengalahkanku???
-  - speakerName: Trash Monster
-    sentence: MWAHAHAHAHAHAA...
-  - speakerName: Raka
-    sentence: Aku....
-  - speakerName: Raka
-    sentence: Aku tidak akan menyerahh!!!
-  - speakerName: Trash Monster
-    sentence: Jika begitu, buktikanlah!!
-  - speakerName: Raka
-    sentence: AKU AKAN MENGALAHKANMU!!!!
-  - speakerName: Trash Monster
-    sentence: COBA SAJAAA!!!
+  - speakerName: Ebin
+    sentence: 'k-kamu........
+
+      monsterrrrr'
+  - speakerName: Ifkhar
+    sentence: WAHAAHAHAHAHAH
 --- !u!114 &2063903230
 MonoBehaviour:
   m_ObjectHideFlags: 0

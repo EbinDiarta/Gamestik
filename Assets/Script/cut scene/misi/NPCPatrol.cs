@@ -14,6 +14,10 @@ public class NPCPatrol : MonoBehaviour
     private Vector3 target;
     private SpriteRenderer sr;
 
+    void Start()
+    {
+        Sound.instance.StopMusic();
+    }
     void Awake()
     {
         instance = this;

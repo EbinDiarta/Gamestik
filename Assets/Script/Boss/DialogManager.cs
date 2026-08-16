@@ -6,6 +6,7 @@ using TMPro;
 public struct DialogLine
 {
     public string speakerName;
+
     [TextArea(2, 5)]
     public string sentence;
 }
@@ -18,6 +19,11 @@ public class DialogManager : MonoBehaviour
     [SerializeField] private TMP_Text sentenceText;
     [SerializeField] private GameObject skipInstructionUI;
 
+    [Header("Fade Settings")]
+    [SerializeField] private CanvasGroup fadeCanvasGroup;
+    [SerializeField] private float fadeDuration = 0.5f;
+    [SerializeField] private float blackScreenDuration = 0.2f;
+
     [Header("Typewriter Settings")]
     [SerializeField] private float typingSpeed = 0.04f;
 
@@ -27,19 +33,31 @@ public class DialogManager : MonoBehaviour
     private int currentLineIndex = 0;
     private bool isTyping = false;
     private bool isDialogActive = false;
+    private bool isEndingDialog = false;
     private Coroutine typingCoroutine;
 
     public System.Action OnDialogCompleted;
 
     private void Awake()
     {
-        if (dialogPanel != null) dialogPanel.SetActive(false);
-        if (skipInstructionUI != null) skipInstructionUI.SetActive(false);
+        if (dialogPanel != null)
+            dialogPanel.SetActive(false);
+
+        if (skipInstructionUI != null)
+            skipInstructionUI.SetActive(false);
+
+        if (fadeCanvasGroup != null)
+        {
+            fadeCanvasGroup.alpha = 0f;
+            fadeCanvasGroup.interactable = false;
+            fadeCanvasGroup.blocksRaycasts = false;
+        }
     }
 
     private void Update()
     {
-        if (!isDialogActive) return;
+        if (!isDialogActive || isEndingDialog)
+            return;
 
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -51,13 +69,16 @@ public class DialogManager : MonoBehaviour
         {
             if (isTyping)
             {
-                StopCoroutine(typingCoroutine);
+                if (typingCoroutine != null)
+                    StopCoroutine(typingCoroutine);
+
                 sentenceText.text = dialogLines[currentLineIndex].sentence;
                 isTyping = false;
             }
             else
             {
                 currentLineIndex++;
+
                 if (currentLineIndex < dialogLines.Length)
                 {
                     DisplayNextSentence();
@@ -72,32 +93,49 @@ public class DialogManager : MonoBehaviour
 
     public void StartDialog()
     {
+        if (isDialogActive || isEndingDialog)
+            return;
+
         isDialogActive = true;
         currentLineIndex = 0;
 
-        if (dialogPanel != null) dialogPanel.SetActive(true);
-        if (skipInstructionUI != null) skipInstructionUI.SetActive(true);
+        if (dialogPanel != null)
+            dialogPanel.SetActive(true);
+
+        if (skipInstructionUI != null)
+            skipInstructionUI.SetActive(true);
 
         DisplayNextSentence();
     }
 
     private void DisplayNextSentence()
     {
-        DialogLine currentLine = dialogLines[currentLineIndex];
-        nameText.text = currentLine.speakerName;
+        if (currentLineIndex < 0 || currentLineIndex >= dialogLines.Length)
+            return;
 
-        if (typingCoroutine != null) StopCoroutine(typingCoroutine);
+        DialogLine currentLine = dialogLines[currentLineIndex];
+
+        if (nameText != null)
+            nameText.text = currentLine.speakerName;
+
+        if (typingCoroutine != null)
+            StopCoroutine(typingCoroutine);
+
         typingCoroutine = StartCoroutine(TypeSentence(currentLine.sentence));
     }
 
     private IEnumerator TypeSentence(string sentence)
     {
         isTyping = true;
-        sentenceText.text = "";
+
+        if (sentenceText != null)
+            sentenceText.text = "";
 
         foreach (char letter in sentence.ToCharArray())
         {
-            sentenceText.text += letter;
+            if (sentenceText != null)
+                sentenceText.text += letter;
+
             yield return new WaitForSeconds(typingSpeed);
         }
 
@@ -106,13 +144,65 @@ public class DialogManager : MonoBehaviour
 
     private void EndDialog()
     {
-        if (typingCoroutine != null) StopCoroutine(typingCoroutine);
+        if (isEndingDialog)
+            return;
 
+        isEndingDialog = true;
         isDialogActive = false;
-        
-        if (dialogPanel != null) dialogPanel.SetActive(false);
-        if (skipInstructionUI != null) skipInstructionUI.SetActive(false);
+
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+            typingCoroutine = null;
+        }
+
+        isTyping = false;
+
+        if (dialogPanel != null)
+            dialogPanel.SetActive(false);
+
+        if (skipInstructionUI != null)
+            skipInstructionUI.SetActive(false);
+
+        StartCoroutine(FadeAfterDialog());
+    }
+
+    private IEnumerator FadeAfterDialog()
+    {
+        yield return StartCoroutine(Fade(1f));
+
+        yield return new WaitForSeconds(blackScreenDuration);
 
         OnDialogCompleted?.Invoke();
+
+        yield return StartCoroutine(Fade(0f));
+
+        isEndingDialog = false;
+    }
+
+    private IEnumerator Fade(float targetAlpha)
+    {
+        if (fadeCanvasGroup == null)
+            yield break;
+
+        float startAlpha = fadeCanvasGroup.alpha;
+        float elapsed = 0f;
+
+        while (elapsed < fadeDuration)
+        {
+            elapsed += Time.deltaTime;
+
+            float progress = elapsed / fadeDuration;
+
+            fadeCanvasGroup.alpha = Mathf.Lerp(
+                startAlpha,
+                targetAlpha,
+                progress
+            );
+
+            yield return null;
+        }
+
+        fadeCanvasGroup.alpha = targetAlpha;
     }
 }
